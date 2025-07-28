@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mr. Chicken - Tarjeta de Presentación Digital</title>
-    <!-- Color del tema para la barra del navegador en móviles -->
-    <meta name="theme-color" content="#E53935">
     
-    <!-- Fuentes de Google Fonts (Inter para texto general, Oswald para títulos) -->
+    <!-- Fuentes de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
@@ -15,30 +13,13 @@
     <!-- Iconos de Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
-    <!-- Tailwind CSS CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* Configuración de Tailwind para usar las fuentes personalizadas */
-        @tailwind base;
-        @tailwind components;
-        @tailwind utilities;
-
-        html, body {
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            font-family: 'Inter', sans-serif;
-            -webkit-font-smoothing: antialiased;
-            text-rendering: optimizeLegibility;
-            box-sizing: border-box;
-        }
-
-        /* Variables CSS para colores (manteniendo la paleta original) */
+        /* --- PALETA DE COLORES Y VARIABLES --- */
         :root {
-            --rojo-principal: #E53935; /* Rojo vibrante para acciones primarias */
-            --rojo-secundario: #EF5350; /* Rojo más suave para acciones secundarias */
-            --rojo-oscuro: #C62828;    /* Rojo profundo para fondos y hovers */
-            --verde-marca: #4CAF50;
+            --rojo-marca: #D32F2F;
+            --rojo-oscuro: #B71C1C;
+            --amarillo-marca: #FFC107;
+            --verde-marca: #f6f6f6; /* Color verde para el borde */
             --texto-principal: #212121;
             --texto-secundario: #616161;
             --fondo: #ffffff;
@@ -46,105 +27,316 @@
             --borde-suave: #eeeeee;
         }
 
-        /* Aplicación de colores personalizados a clases de Tailwind */
-        .bg-rojo-principal { background-color: var(--rojo-principal); }
-        .bg-rojo-secundario { background-color: var(--rojo-secundario); }
-        .bg-rojo-oscuro { background-color: var(--rojo-oscuro); }
-        .bg-verde-marca { background-color: var(--verde-marca); }
-        .text-rojo-principal { color: var(--rojo-principal); }
-        .text-texto-principal { color: var(--texto-principal); }
-        .text-texto-secundario { color: var(--texto-secundario); }
-        .bg-fondo { background-color: var(--fondo); }
-        .bg-fondo-alternativo { background-color: var(--fondo-alternativo); }
-        .border-borde-suave { border-color: var(--borde-suave); }
+        /* --- ESTILOS GENERALES Y MEJORAS DE RENDERIZADO --- */
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 20px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: var(--fondo-alternativo);
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            text-rendering: optimizeLegibility;
+        }
 
-        /* Estilos personalizados para el logo */
+        /* --- CONTENEDOR PRINCIPAL DE LA TARJETA --- */
+        .tarjeta {
+            width: 100%;
+            max-width: 400px;
+            background: var(--fondo);
+            border-radius: 24px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            text-align: center;
+            animation: fadeInCard 1s ease-out forwards;
+            border: 1px solid var(--borde-suave);
+        }
+
+        /* --- ENCABEZADO CON PORTADA Y PERFIL --- */
+        .header {
+            position: relative;
+            height: 150px;
+            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)), url('https://images.pexels.com/photos/2725744/pexels-photo-2725744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+        }
+
         .logo {
-            width: 80px; /* Más pequeño */
-            height: 80px; /* Más pequeño */
+            width: 110px;
+            height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid #f6f6f6; /* Borde más fino */
-            box-shadow: 0 6px 16px rgba(0,0,0,0.1); /* Sombra más suave */
+            border: 5px solid var(--verde-marca); /* Borde verde */
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             position: absolute;
-            bottom: -40px; /* Ajuste de posición */
+            bottom: -55px;
             left: 50%;
             transform: translateX(-50%);
             animation: scaleIn 0.8s 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-            /* opacity: 0; <-- Eliminado para visibilidad inicial */
+            opacity: 0;
         }
 
-        /* Animaciones */
+        /* --- CUERPO DE LA TARJETA --- */
+        .cuerpo {
+            padding: 70px 30px 30px 30px;
+        }
+
+        /* --- TEXTOS (TAMAÑOS AJUSTADOS Y EQUILIBRADOS) --- */
+        .nombre {
+            font-family: 'Oswald', sans-serif;
+            font-size: 2.2em;
+            color: #000000;
+            margin: 0;
+            line-height: 1.2;
+            text-transform: uppercase;
+            animation: slideInDown 0.8s 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .titulo {
+            font-size: 1em;
+            font-weight: 700;
+            color: #d7170d;
+            margin: 5px 0 15px 0;
+            animation: slideInDown 0.8s 0.8s ease-out forwards;
+            opacity: 0;
+            letter-spacing: 0.5px;
+        }
+
+        .descripcion {
+            font-size: 0.9em;
+            color: var(--texto-secundario);
+            margin-bottom: 25px;
+            line-height: 1.6;
+            animation: slideInDown 0.8s 1s ease-out forwards;
+            opacity: 0;
+        }
+        
+        .seccion-titulo {
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.1em;
+            color: #4b544b;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            animation: slideInDown 0.8s 1.2s ease-out forwards;
+            opacity: 0;
+        }
+
+        /* --- LISTA DE BOTONES DE REDES SOCIALES --- */
+        .lista-botones {
+            padding: 0 15px;
+            margin-bottom: 30px;
+        }
+
+        .boton-red {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background:#df1a1ae0;
+            color: white;
+            padding: 12px 18px;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            animation: slideInDown 0.8s 1.5s ease-out forwards;
+            opacity: 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* CAMBIO: Sombreado añadido */
+        }
+
+        .boton-red:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* CAMBIO: Sombreado intensificado en hover */
+            background-color: var(--rojo-oscuro);
+        }
+
+        .boton-red i {
+            font-size: 1.2em;
+            margin-right: 12px;
+        }
+        
+        /* --- MENÚ INFERIOR INTERACTIVO (CON TEXTO) --- */
+        .menu-interactivo {
+            display: flex;
+            justify-content: space-around;
+            background-color: var(--rojo-oscuro);
+        }
+
+        .menu-item {
+            flex: 1;
+            padding: 5px 5px;
+            color: #ffffff;
+            cursor: pointer;
+            transition: background-color 0.3s ease, color 0.3s ease;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .menu-item:hover {
+            background-color: var(--rojo-marca);
+        }
+
+        .menu-item-icon {
+            font-size: 1.1em;
+            margin-bottom: 3px;
+        }
+        
+        .menu-item-text {
+            font-size: 0.6em;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* --- VENTANAS MODALES (Estilos consistentes) --- */
+        .modal-container {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        .modal-content {
+            background: var(--fondo);
+            padding: 30px;
+            border-radius: 16px;
+            max-width: 500px;
+            width: 90%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            position: relative;
+            animation: scaleInModal 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--fondo-alternativo);
+            border: none;
+            color: var(--texto-secundario);
+            font-size: 1.2em;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .close-modal:hover {
+            background-color: var(--rojo-marca);
+            color: white;
+        }
+        .modal-body h2 {
+            font-family: 'Oswald', sans-serif;
+            color: var(--rojo-marca);
+            margin-top: 0;
+            font-size: 1.8em;
+        }
+        .modal-body p, .modal-body li {
+            color: var(--texto-secundario);
+            line-height: 1.7;
+            font-size: 0.95em;
+        }
+        .modal-body ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        .modal-body li {
+            padding: 10px 5px;
+            border-bottom: 1px solid var(--borde-suave);
+        }
+        .modal-body li strong {
+            color: var(--texto-principal);
+        }
+        .mapa-responsive {
+            overflow: hidden;
+            padding-bottom: 56.25%;
+            position: relative;
+            height: 0;
+            border-radius: 12px;
+            margin-top: 15px;
+        }
+        .mapa-responsive iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+            border: 0;
+        }
+
+        /* --- ANIMACIONES --- */
         @keyframes fadeInCard { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes scaleIn { from { opacity: 0; transform: translateX(-50%) scale(0.5); } to { opacity: 1; transform: translateX(-50%) scale(1); } }
         @keyframes slideInDown { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes scaleInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
     </style>
 </head>
-<body class="flex flex-col md:flex-row md:justify-center md:items-center md:p-4 bg-fondo md:bg-fondo-alternativo min-h-screen">
-    <div class="tarjeta w-full h-full md:max-w-sm md:h-auto md:max-h-[98vh] bg-fondo flex flex-col text-center animate-fadeInCard md:rounded-3xl md:shadow-xl md:border md:border-borde-suave md:overflow-hidden">
-        <div class="header relative z-10 h-28 bg-cover bg-center flex-shrink-0" style="background-image: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)), url('https://images.pexels.com/photos/2725744/pexels-photo-2725744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');">
-            <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLEJdYvzriVkj13c5g71Je6ZE0gbi0nwJUyQ&s" alt="Logo de Mr. Chicken" onerror="this.onerror=null;this.src='https://placehold.co/80x80/E53935/FFFFFF?text=Mr.+C';">
+<body>
+    <div class="tarjeta">
+        <div class="header">
+            <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLEJdYvzriVkj13c5g71Je6ZE0gbi0nwJUyQ&s" alt="Logo de Mr. Chicken" onerror="this.onerror=null;this.src='https://placehold.co/110x110/D32F2F/FFFFFF?text=Mr.+C';">
         </div>
         
-        <div class="cuerpo p-4 pt-12 flex-1 overflow-hidden bg-fondo">
-            <!-- Eliminado opacity-0 de las clases iniciales para asegurar visibilidad -->
-            <h1 class="font-oswald text-3xl text-black m-0 leading-tight uppercase animate-slideInDown" style="animation-delay: 0.6s;">Mr. Chicken</h1>
-            <p class="text-base font-bold text-gray-700 mt-0.5 mb-2 animate-slideInDown tracking-wide" style="animation-delay: 0.8s;">El Sabor Auténtico de Quevedo</p>
-            <p class="text-xs text-texto-secundario mb-3 leading-snug max-w-xs mx-auto animate-slideInDown" style="animation-delay: 1s;">
-                El sabor que nos une en Quevedo. Ingredientes frescos, recetas únicas y momentos para recordar.
+        <div class="cuerpo">
+            <h1 class="nombre">Mr. Chicken</h1>
+            <p class="titulo">El Sabor Auténtico de Quevedo</p>
+            <p class="descripcion">
+                Especialistas en crear momentos inolvidables a través del sabor.
             </p>
 
-            <!-- SECCIÓN DE ACCIONES RÁPIDAS -->
-            <div class="flex justify-center gap-3 mb-3 animate-slideInDown" style="animation-delay: 1.2s;">
-                <a href="tel:+593999999999" class="boton-accion llamar flex flex-col items-center justify-center text-white p-1.5 rounded-md transition-all duration-300 ease-in-out text-[0.65rem] font-medium w-20 h-12 shadow-md hover:translate-y-[-2px] hover:shadow-lg bg-rojo-principal">
-                    <i class="fas fa-phone text-lg mb-0.5"></i>
-                    <span>Llamar</span>
+            <div class="lista-botones">
+                <h3 class="seccion-titulo">Síguenos en Redes</h3>
+                <a href="https://tiktok.com/@tucuenta" target="_blank" class="boton-red tiktok">
+                    <i class="fab fa-tiktok"></i> TikTok
                 </a>
-                <a href="https://wa.me/593999999999?text=Hola,%20vengo%20de%20su%20tarjeta%20digital.%20Quisiera%20más%20información." target="_blank" class="boton-accion whatsapp flex flex-col items-center justify-center text-white p-1.5 rounded-md transition-all duration-300 ease-in-out text-[0.65rem] font-medium w-20 h-12 shadow-md hover:translate-y-[-2px] hover:shadow-lg bg-verde-marca">
-                    <i class="fab fa-whatsapp text-lg mb-0.5"></i>
-                    <span>WhatsApp</span>
+                <a href="https://youtube.com/tucanal" target="_blank" class="boton-red youtube">
+                    <i class="fab fa-youtube"></i> YouTube
                 </a>
-            </div>
-
-            <div class="px-3 mb-1">
-                <h3 class="font-oswald text-sm text-gray-700 mt-3 mb-1 uppercase tracking-wide font-semibold animate-slideInDown" style="animation-delay: 1.4s;">Síguenos en Redes</h3>
-                <a href="https://tiktok.com/@mrchickenquevedo" target="_blank" class="boton-red tiktok flex items-center justify-center bg-rojo-secundario text-white py-1.5 px-2 text-xs uppercase tracking-tight font-medium mb-1.5 rounded-md transition-all duration-300 ease-in-out animate-slideInDown shadow-sm hover:translate-y-[-2px] hover:shadow-md hover:bg-rojo-principal" style="animation-delay: 1.5s;">
-                    <i class="fab fa-tiktok text-base mr-3"></i> TikTok
-                </a>
-                <a href="https://youtube.com/@mrchickenquevedo" target="_blank" class="boton-red youtube flex items-center justify-center bg-rojo-secundario text-white py-1.5 px-2 text-xs uppercase tracking-tight font-medium mb-1.5 rounded-md transition-all duration-300 ease-in-out animate-slideInDown shadow-sm hover:translate-y-[-2px] hover:shadow-md hover:bg-rojo-principal" style="animation-delay: 1.6s;">
-                    <i class="fab fa-youtube text-base mr-3"></i> YouTube
-                </a>
-                <a href="https://facebook.com/mrchickenquevedo" target="_blank" class="boton-red facebook flex items-center justify-center bg-rojo-secundario text-white py-1.5 px-2 text-xs uppercase tracking-tight font-medium mb-1.5 rounded-md transition-all duration-300 ease-in-out animate-slideInDown shadow-sm hover:translate-y-[-2px] hover:shadow-md hover:bg-rojo-principal" style="animation-delay: 1.7s;">
-                    <i class="fab fa-facebook-f text-base mr-3"></i> Facebook
+                <a href="https://facebook.com/tupagina" target="_blank" class="boton-red facebook">
+                    <i class="fab fa-facebook-f"></i> Facebook
                 </a>
             </div>
         </div>
         
-        <div class="menu-interactivo flex justify-around bg-rojo-oscuro flex-shrink-0 shadow-lg">
-            <button class="menu-item flex-1 p-1.5 text-white cursor-pointer transition-colors duration-300 ease-in-out text-center flex flex-col items-center justify-center border-none bg-none hover:bg-rojo-principal" onclick="showModal('info')" title="Información" aria-label="Ver información de contacto y horarios">
-                <i class="fas fa-info-circle text-base mb-0.5"></i>
-                <span class="text-[0.6rem] font-medium uppercase tracking-wide">Info</span>
-            </button>
-            <button class="menu-item flex-1 p-1.5 text-white cursor-pointer transition-colors duration-300 ease-in-out text-center flex flex-col items-center justify-center border-none bg-none hover:bg-rojo-principal" onclick="showModal('menu')" title="Nuestro Menú" aria-label="Ver nuestro menú de comidas">
-                <i class="fas fa-utensils text-base mb-0.5"></i>
-                <span class="text-[0.6rem] font-medium uppercase tracking-wide">Menú</span>
-            </button>
-            <button class="menu-item flex-1 p-1.5 text-white cursor-pointer transition-colors duration-300 ease-in-out text-center flex flex-col items-center justify-center border-none bg-none hover:bg-rojo-principal" onclick="showModal('location')" title="Ubicación" aria-label="Ver nuestra ubicación en el mapa">
-                <i class="fas fa-map-marker-alt text-base mb-0.5"></i>
-                <span class="text-[0.6rem] font-medium uppercase tracking-wide">Lugar</span>
-            </button>
-            <button class="menu-item flex-1 p-1.5 text-white cursor-pointer transition-colors duration-300 ease-in-out text-center flex flex-col items-center justify-center border-none bg-none hover:bg-rojo-principal" id="shareButton" title="Compartir" aria-label="Compartir esta tarjeta de presentación">
-                <i class="fas fa-share-alt text-base mb-0.5"></i>
-                <span class="text-[0.6rem] font-medium uppercase tracking-wide">Compartir</span>
-            </button>
+        <!-- El menú ahora está fuera del 'cuerpo' para pegarse al fondo de la tarjeta -->
+        <div class="menu-interactivo">
+            <div class="menu-item" onclick="showModal('info')" title="Información">
+                <i class="fas fa-info-circle menu-item-icon"></i>
+                <span class="menu-item-text">Info</span>
+            </div>
+            <div class="menu-item" onclick="showModal('menu')" title="Nuestro Menú">
+                <i class="fas fa-utensils menu-item-icon"></i>
+                <span class="menu-item-text">Menú</span>
+            </div>
+            <div class="menu-item" onclick="showModal('location')" title="Ubicación">
+                <i class="fas fa-map-marker-alt menu-item-icon"></i>
+                <span class="menu-item-text">Lugar</span>
+            </div>
         </div>
     </div>
 
     <!-- Ventana modal única para toda la información -->
-    <div id="modal-container" class="modal-container hidden fixed top-0 left-0 w-full h-full bg-black bg-opacity-60 z-[1000] justify-center items-center backdrop-blur-sm">
-        <div id="modal-content" class="modal-content bg-fondo p-6 rounded-xl max-w-md w-[90%] shadow-2xl relative animate-scaleInModal">
-            <button id="close-modal" class="close-modal absolute top-3 right-3 bg-fondo-alternativo border-none text-texto-secundario text-xl w-7 h-7 rounded-full flex justify-center items-center cursor-pointer transition-colors duration-200 hover:bg-rojo-principal hover:text-white">&times;</button>
+    <div id="modal-container" class="modal-container">
+        <div id="modal-content" class="modal-content">
+            <button id="close-modal" class="close-modal" aria-label="Cerrar ventana">&times;</button>
             <div id="modal-body" class="modal-body"></div>
         </div>
     </div>
@@ -153,74 +345,42 @@
         const modalContainer = document.getElementById('modal-container');
         const modalBody = document.getElementById('modal-body');
         const closeModalButton = document.getElementById('close-modal');
-        const shareButton = document.getElementById('shareButton');
 
-        // RECUERDA: Actualiza el número de teléfono y los enlaces a redes sociales
         const modalContent = {
             info: `
-                <h2 class="font-oswald text-rojo-principal mt-0 text-2xl mb-3"><i class="fas fa-info-circle mr-2"></i> Información</h2>
-                <p class="text-texto-secundario leading-snug text-sm mb-3">Bienvenido a Mr. Chicken, tu destino para disfrutar de sabores auténticos y experiencias memorables en el corazón de Quevedo.</p>
-                <ul class="list-none p-0 text-sm">
-                    <li class="py-1.5 px-0.5 border-b border-borde-suave text-texto-secundario"><strong>Dirección:</strong> Calle 123, Quevedo, Ecuador</li>
-                    <li class="py-1.5 px-0.5 border-b border-borde-suave text-texto-secundario"><strong>Teléfono:</strong> +593 999 999 999</li>
-                    <li class="py-1.5 px-0.5 text-texto-secundario"><strong>Horarios:</strong> Lunes a Domingo, 10:00 AM - 10:00 PM</li>
+                <h2><i class="fas fa-info-circle"></i> Información</h2>
+                <p>Bienvenido a Mr. Chicken, tu destino para disfrutar de sabores auténticos y experiencias memorables en el corazón de Quevedo.</p>
+                <ul>
+                    <li><strong>Dirección:</strong> Calle 123, Quevedo, Ecuador</li>
+                    <li><strong>Teléfono:</strong> +593 999 999 999</li>
+                    <li><strong>Horarios:</strong> Lunes a Domingo, 10:00 AM - 10:00 PM</li>
                 </ul>
             `,
             menu: `
-                <h2 class="font-oswald text-rojo-principal mt-0 text-2xl mb-3"><i class="fas fa-utensils mr-2"></i> Nuestro Menú</h2>
-                <ul class="list-none p-0 text-sm">
-                    <li class="py-1.5 px-0.5 border-b border-borde-suave text-texto-secundario"><strong>Alitas Picantes:</strong> Alitas de pollo fritas con nuestra mezcla secreta de especias.</li>
-                    <li class="py-1.5 px-0.5 border-b border-borde-suave text-texto-secundario"><strong>Hamburguesa Gourmet:</strong> Carne premium, queso derretido y vegetales frescos.</li>
-                    <li class="py-1.5 px-0.5 border-b border-borde-suave text-texto-secundario"><strong>Papas Fritas:</strong> Papas doradas acompañadas de nuestro exclusivo ketchup casero.</li>
-                    <li class="py-1.5 px-0.5 text-texto-secundario"><strong>Postre del Día:</strong> Delicioso pastel de chocolate artesanal.</li>
+                <h2><i class="fas fa-utensils"></i> Nuestro Menú</h2>
+                <ul>
+                    <li><strong>Alitas Picantes:</strong> Alitas de pollo fritas con nuestra mezcla secreta de especias.</li>
+                    <li><strong>Hamburguesa Gourmet:</strong> Carne premium, queso derretido y vegetales frescos.</li>
+                    <li><strong>Papas Fritas:</strong> Papas doradas acompañadas de nuestro exclusivo ketchup casero.</li>
+                    <li><strong>Postre del Día:</strong> Delicioso pastel de chocolate artesanal.</li>
                 </ul>
             `,
             location: `
-                <h2 class="font-oswald text-rojo-principal mt-0 text-2xl mb-3"><i class="fas fa-map-marker-alt mr-2"></i> Ubicación</h2>
-                <p class="text-texto-secundario leading-snug text-sm mb-3">Encuéntranos fácilmente en el Parque Central de Quevedo:</p>
-                <div class="mapa-responsive overflow-hidden pb-[56.25%] relative h-0 rounded-lg mt-3">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.279865183818!2d-79.4646813857335!3d-1.028889999172421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902b18b14a0d9c3b%3A0x1b1d833e9e1e3e4d!2sParque%20Central%20de%20Quevedo!5e0!3m2!1ses!2sec!4v1678886400000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" class="absolute top-0 left-0 w-full h-full border-0"></iframe>
-                </div>
-            `,
-            'share-fallback': `
-                <h2 class="font-oswald text-rojo-principal mt-0 text-2xl mb-3"><i class="fas fa-share-alt mr-2"></i> Compartir Tarjeta</h2>
-                <p class="text-texto-secundario leading-snug text-sm mb-3">Tu navegador no soporta la función de compartir. ¡Copia el enlace y compártelo donde quieras!</p>
-                <div class="share-fallback-container flex mt-4">
-                    <input type="text" value="${window.location.href}" readonly id="share-url-input" class="flex-grow border border-borde-suave p-2 rounded-l-md bg-fondo-alternativo text-texto-secundario text-sm focus:outline-none focus:ring-1 focus:ring-rojo-principal">
-                    <button id="copy-link-button" class="py-2 px-3 border-none bg-rojo-principal text-white rounded-r-md cursor-pointer font-medium transition-colors duration-200 hover:bg-rojo-oscuro"><i class="fas fa-copy mr-1"></i> Copiar</button>
+                <h2><i class="fas fa-map-marker-alt"></i> Ubicación</h2>
+                <p>Encuéntranos fácilmente en el Parque Central de Quevedo:</p>
+                <div class="mapa-responsive">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.279865183818!2d-79.4646813857335!3d-1.028889999172421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902b18b14a0d9c3b%3A0x1b1d833e9e1e3e4d!2sParque%20Central%20de%20Quevedo!5e0!3m2!1ses!2sec!4v1678886400000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             `
         };
 
         function showModal(contentKey) {
             modalBody.innerHTML = modalContent[contentKey];
-            modalContainer.classList.remove('hidden'); // Muestra el modal
-            modalContainer.classList.add('flex'); // Asegura que flexbox esté activo
-
-            if (contentKey === 'share-fallback') {
-                const copyButton = document.getElementById('copy-link-button');
-                const urlInput = document.getElementById('share-url-input');
-                
-                copyButton.addEventListener('click', () => {
-                    // Para copiar texto al portapapeles de forma compatible con iframes
-                    const tempTextArea = document.createElement('textarea');
-                    tempTextArea.value = urlInput.value;
-                    document.body.appendChild(tempTextArea);
-                    tempTextArea.select();
-                    document.execCommand('copy');
-                    document.body.removeChild(tempTextArea);
-
-                    copyButton.innerHTML = '<i class="fas fa-check mr-1"></i> ¡Copiado!';
-                    setTimeout(() => {
-                        copyButton.innerHTML = '<i class="fas fa-copy mr-1"></i> Copiar';
-                    }, 2000);
-                });
-            }
+            modalContainer.style.display = 'flex';
         }
 
         function closeModal() {
-            modalContainer.classList.add('hidden'); // Oculta el modal
-            modalContainer.classList.remove('flex'); // Remueve flexbox para asegurar que esté oculto
+            modalContainer.style.display = 'none';
         }
 
         closeModalButton.addEventListener('click', closeModal);
@@ -230,27 +390,10 @@
             }
         });
         
+        // Cierra el modal con la tecla 'Escape'
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
                 closeModal();
-            }
-        });
-
-        shareButton.addEventListener('click', async () => {
-            const shareData = {
-                title: 'Mr. Chicken - Tarjeta Digital',
-                text: '¡Descubre el sabor auténtico de Quevedo con Mr. Chicken!',
-                url: window.location.href
-            };
-            
-            if (navigator.share) {
-                try {
-                    await navigator.share(shareData);
-                } catch (err) {
-                    console.log('El usuario canceló la acción de compartir.', err);
-                }
-            } else {
-                showModal('share-fallback');
             }
         });
     </script>
