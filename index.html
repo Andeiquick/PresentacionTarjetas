@@ -60,20 +60,20 @@
         .header {
             position: relative; /* Clave para el z-index */
             z-index: 10; /* Asegura que el header esté sobre el cuerpo */
-            height: 150px;
+            height: 140px; 
             background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)), url('https://images.pexels.com/photos/2725744/pexels-photo-2725744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
             flex-shrink: 0; 
         }
 
         .logo {
-            width: 110px;
-            height: 110px;
+            width: 100px; 
+            height: 100px; 
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid #f6f6f6;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.12); /* Sombra más suave */
+            border: 4px solid #f6f6f6;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12);
             position: absolute;
-            bottom: -55px;
+            bottom: -50px; 
             left: 50%;
             transform: translateX(-50%);
             animation: scaleIn 0.8s 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
@@ -82,17 +82,16 @@
 
         /* --- CUERPO DE LA TARJETA --- */
         .cuerpo {
-            padding: 70px 20px 30px 20px;
+            padding: 60px 20px 15px 20px; 
             flex: 1;
-            overflow-y: auto;
-            -webkit-overflow-scrolling: touch;
-            background-color: var(--fondo); /* Asegura un fondo sólido */
+            overflow: hidden; /* Deslizamiento desactivado */
+            background-color: var(--fondo);
         }
 
         /* --- TEXTOS --- */
         .nombre {
             font-family: 'Oswald', sans-serif;
-            font-size: 2.2em;
+            font-size: 2em; 
             color: #000000;
             margin: 0;
             line-height: 1.2;
@@ -102,20 +101,20 @@
         }
 
         .titulo {
-            font-size: 1em;
+            font-size: 0.95em;
             font-weight: 700;
-            color: #5e5553; /* Nuevo color */
-            margin: 5px 0 15px 0;
+            color: #514a4a;
+            margin: 4px 0 10px 0; 
             animation: slideInDown 0.8s 0.8s ease-out forwards;
             opacity: 0;
             letter-spacing: 0.5px;
         }
 
         .descripcion {
-            font-size: 0.95em;
+            font-size: 0.9em;
             color: var(--texto-secundario);
-            margin-bottom: 25px;
-            line-height: 1.6;
+            margin-bottom: 15px; 
+            line-height: 1.5;
             animation: slideInDown 0.8s 1s ease-out forwards;
             opacity: 0;
             max-width: 340px;
@@ -125,10 +124,10 @@
         
         .seccion-titulo {
             font-family: 'Oswald', sans-serif;
-            font-size: 1.1em;
+            font-size: 1em;
             color: #4b544b;
-            margin-top: 30px;
-            margin-bottom: 15px;
+            margin-top: 15px; /* Margen reducido */
+            margin-bottom: 8px; /* Margen reducido */
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
@@ -141,7 +140,7 @@
             display: flex;
             justify-content: center;
             gap: 15px;
-            margin-bottom: 25px;
+            margin-bottom: 12px; /* Margen reducido */
             animation: slideInDown 0.8s 1.2s ease-out forwards;
             opacity: 0;
         }
@@ -153,18 +152,18 @@
             justify-content: center;
             text-decoration: none;
             color: white;
-            padding: 10px;
-            border-radius: 12px;
+            padding: 6px; /* Padding reducido */
+            border-radius: 5px; /* Borde más pequeño */
             transition: all 0.3s ease;
-            font-size: 0.8em;
+            font-size: 0.7em; /* Texto más pequeño */
             font-weight: 500;
-            width: 120px;
-            height: 60px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Sombra suave */
+            width: 90px; /* Más pequeño */
+            height: 45px; /* Más pequeño */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
         }
         .boton-accion i {
-            font-size: 1.5em;
-            margin-bottom: 5px;
+            font-size: 1.2em; /* Icono más pequeño */
+            margin-bottom: 4px;
         }
         .boton-accion.llamar { background-color: var(--rojo-principal); }
         .boton-accion.whatsapp { background-color: var(--verde-marca); }
@@ -176,23 +175,23 @@
         /* --- LISTA DE BOTONES DE REDES SOCIALES --- */
         .lista-botones {
             padding: 0 15px;
-            margin-bottom: 30px;
+            margin-bottom: 8px; /* Margen reducido */
         }
 
         .boton-red {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: var(--rojo-secundario); /* Nuevo color */
+            background: var(--rojo-secundario);
             color: white;
-            padding: 12px 18px;
+            padding: 4px 5px; /* Padding reducido */
             text-decoration: none;
             font-weight: 500;
-            font-size: 0.85em;
+            font-size: 0.8em;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            margin-bottom: 12px;
-            border-radius: 12px;
+            margin-bottom: 6px; /* Margen reducido */
+            border-radius: 3px;
             transition: all 0.3s ease;
             animation: slideInDown 0.8s 1.5s ease-out forwards;
             opacity: 0;
@@ -202,7 +201,7 @@
         .boton-red:hover {
             transform: translateY(-3px);
             box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-            background-color: var(--rojo-principal); /* Hover más intenso */
+            background-color: var(--rojo-principal);
         }
 
         .boton-red i {
@@ -214,7 +213,7 @@
         .menu-interactivo {
             display: flex;
             justify-content: space-around;
-            background-color: var(--rojo-oscuro); /* Nuevo color base */
+            background-color: var(--rojo-oscuro);
             flex-shrink: 0;
             box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
         }
@@ -235,7 +234,7 @@
         }
         
         .menu-item:hover {
-            background-color: var(--rojo-principal); /* Hover más intenso */
+            background-color: var(--rojo-principal);
         }
 
         .menu-item-icon {
@@ -385,7 +384,7 @@
 
             .cuerpo {
                 flex: initial;
-                overflow-y: visible;
+                overflow-y: auto; /* Se reactiva el scroll para escritorio */
             }
         }
 
@@ -399,7 +398,7 @@
 <body>
     <div class="tarjeta">
         <div class="header">
-            <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLEJdYvzriVkj13c5g71Je6ZE0gbi0nwJUyQ&s" alt="Logo de Mr. Chicken" onerror="this.onerror=null;this.src='https://placehold.co/110x110/D32F2F/FFFFFF?text=Mr.+C';">
+            <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLEJdYvzriVkj13c5g71Je6ZE0gbi0nwJUyQ&s" alt="Logo de Mr. Chicken" onerror="this.onerror=null;this.src='https://placehold.co/100x100/E53935/FFFFFF?text=Mr.+C';">
         </div>
         
         <div class="cuerpo">
