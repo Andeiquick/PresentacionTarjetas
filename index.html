@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mr. Chicken - Tarjeta de Presentación Digital</title>
     <!-- Color del tema para la barra del navegador en móviles -->
-    <meta name="theme-color" content="#D32F2F">
+    <meta name="theme-color" content="#E53935">
     
     <!-- Fuentes de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,12 +16,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <style>
-        /* --- PALETA DE COLORES Y VARIABLES --- */
+        /* --- PALETA DE COLORES PROFESIONAL --- */
         :root {
-            --rojo-marca: #D32F2F;
-            --rojo-oscuro: #B71C1C;
-            --amarillo-marca: #FFC107;
-            --verde-marca: #4CAF50; /* Verde más vibrante para WhatsApp */
+            --rojo-principal: #E53935; /* Rojo vibrante para acciones primarias */
+            --rojo-secundario: #EF5350; /* Rojo más suave para acciones secundarias */
+            --rojo-oscuro: #C62828;   /* Rojo profundo para fondos y hovers */
+            --verde-marca: #4CAF50;
             --texto-principal: #212121;
             --texto-secundario: #616161;
             --fondo: #ffffff;
@@ -58,7 +58,8 @@
 
         /* --- ENCABEZADO CON PORTADA Y PERFIL --- */
         .header {
-            position: relative;
+            position: relative; /* Clave para el z-index */
+            z-index: 10; /* Asegura que el header esté sobre el cuerpo */
             height: 150px;
             background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)), url('https://images.pexels.com/photos/2725744/pexels-photo-2725744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
             flex-shrink: 0; 
@@ -70,7 +71,7 @@
             border-radius: 50%;
             object-fit: cover;
             border: 5px solid #f6f6f6;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.12); /* Sombra más suave */
             position: absolute;
             bottom: -55px;
             left: 50%;
@@ -85,6 +86,7 @@
             flex: 1;
             overflow-y: auto;
             -webkit-overflow-scrolling: touch;
+            background-color: var(--fondo); /* Asegura un fondo sólido */
         }
 
         /* --- TEXTOS --- */
@@ -102,7 +104,7 @@
         .titulo {
             font-size: 1em;
             font-weight: 700;
-            color: #d7170d;
+            color: var(--rojo-principal); /* Nuevo color */
             margin: 5px 0 15px 0;
             animation: slideInDown 0.8s 0.8s ease-out forwards;
             opacity: 0;
@@ -110,13 +112,13 @@
         }
 
         .descripcion {
-            font-size: 0.95em; /* Ligeramente más grande */
+            font-size: 0.95em;
             color: var(--texto-secundario);
             margin-bottom: 25px;
             line-height: 1.6;
             animation: slideInDown 0.8s 1s ease-out forwards;
             opacity: 0;
-            max-width: 340px; /* Evita que se estire demasiado en pantallas anchas */
+            max-width: 340px;
             margin-left: auto;
             margin-right: auto;
         }
@@ -158,17 +160,17 @@
             font-weight: 500;
             width: 120px;
             height: 60px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15); /* Sombra suave */
         }
         .boton-accion i {
             font-size: 1.5em;
             margin-bottom: 5px;
         }
-        .boton-accion.llamar { background-color: var(--rojo-marca); }
+        .boton-accion.llamar { background-color: var(--rojo-principal); }
         .boton-accion.whatsapp { background-color: var(--verde-marca); }
         .boton-accion:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            box-shadow: 0 6px 16px rgba(0,0,0,0.2);
         }
 
         /* --- LISTA DE BOTONES DE REDES SOCIALES --- */
@@ -181,7 +183,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background:#df1a1ae0;
+            background: var(--rojo-secundario); /* Nuevo color */
             color: white;
             padding: 12px 18px;
             text-decoration: none;
@@ -194,13 +196,13 @@
             transition: all 0.3s ease;
             animation: slideInDown 0.8s 1.5s ease-out forwards;
             opacity: 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
         .boton-red:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-            background-color: var(--rojo-oscuro);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+            background-color: var(--rojo-principal); /* Hover más intenso */
         }
 
         .boton-red i {
@@ -212,8 +214,9 @@
         .menu-interactivo {
             display: flex;
             justify-content: space-around;
-            background-color: var(--rojo-oscuro);
+            background-color: var(--rojo-oscuro); /* Nuevo color base */
             flex-shrink: 0;
+            box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
         }
 
         .menu-item {
@@ -221,7 +224,7 @@
             padding: 5px;
             color: #ffffff;
             cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
+            transition: background-color 0.3s ease;
             text-align: center;
             display: flex;
             flex-direction: column;
@@ -232,7 +235,7 @@
         }
         
         .menu-item:hover {
-            background-color: var(--rojo-marca);
+            background-color: var(--rojo-principal); /* Hover más intenso */
         }
 
         .menu-item-icon {
@@ -289,12 +292,12 @@
             transition: background-color 0.2s, color 0.2s;
         }
         .close-modal:hover {
-            background-color: var(--rojo-marca);
+            background-color: var(--rojo-principal);
             color: white;
         }
         .modal-body h2 {
             font-family: 'Oswald', sans-serif;
-            color: var(--rojo-marca);
+            color: var(--rojo-principal);
             margin-top: 0;
             font-size: 1.8em;
         }
@@ -347,7 +350,7 @@
         #copy-link-button {
             padding: 10px 15px;
             border: none;
-            background-color: var(--rojo-marca);
+            background-color: var(--rojo-principal);
             color: white;
             border-radius: 0 8px 8px 0;
             cursor: pointer;
@@ -507,13 +510,11 @@
             modalBody.innerHTML = modalContent[contentKey];
             modalContainer.style.display = 'flex';
 
-            // Si el modal es el de compartir, añade el listener para el botón de copiar
             if (contentKey === 'share-fallback') {
                 const copyButton = document.getElementById('copy-link-button');
                 const urlInput = document.getElementById('share-url-input');
                 
                 copyButton.addEventListener('click', () => {
-                    // Crea un textarea temporal para usar execCommand
                     const tempTextArea = document.createElement('textarea');
                     tempTextArea.value = urlInput.value;
                     document.body.appendChild(tempTextArea);
@@ -521,7 +522,6 @@
                     document.execCommand('copy');
                     document.body.removeChild(tempTextArea);
 
-                    // Da feedback visual al usuario
                     copyButton.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
                     setTimeout(() => {
                         copyButton.innerHTML = '<i class="fas fa-copy"></i> Copiar';
@@ -547,7 +547,6 @@
             }
         });
 
-        // Lógica para el botón de compartir
         shareButton.addEventListener('click', async () => {
             const shareData = {
                 title: 'Mr. Chicken - Tarjeta Digital',
@@ -562,7 +561,6 @@
                     console.log('El usuario canceló la acción de compartir.');
                 }
             } else {
-                // Fallback para navegadores que no soportan la API
                 showModal('share-fallback');
             }
         });
