@@ -31,21 +31,21 @@
         body {
             font-family: 'Inter', sans-serif;
             margin: 0;
-            padding: 20px; 
+            padding: 20px; /* Añade padding para espacio vertical y horizontal */
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh;
+            min-height: 100vh; /* Asegura que ocupe al menos el 100% del alto de la ventana */
             background-color: var(--fondo-alternativo);
-            box-sizing: border-box;
+            box-sizing: border-box; /* Incluye padding y border en el ancho/alto total */
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
         }
 
         /* --- CONTENEDOR PRINCIPAL DE LA TARJETA --- */
         .tarjeta {
-            width: 100%;
-            max-width: 400px;
+            width: 100%; /* Ocupa el 100% del ancho disponible */
+            max-width: 400px; /* Pero no más de 400px en pantallas grandes */
             background: var(--fondo);
             border-radius: 24px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
@@ -70,16 +70,16 @@
             border: 5px solid var(--verde-marca); /* Borde verde */
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             position: absolute;
-            bottom: -55px;
+            bottom: -55px; /* Centra verticalmente sobre el borde inferior del header */
             left: 50%;
-            transform: translateX(-50%);
+            transform: translateX(-50%); /* Centra horizontalmente */
             animation: scaleIn 0.8s 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             opacity: 0;
         }
 
         /* --- CUERPO DE LA TARJETA --- */
         .cuerpo {
-            padding: 70px 30px 30px 30px;
+            padding: 70px 30px 30px 30px; /* Ajusta el padding para el contenido */
         }
 
         /* --- TEXTOS (TAMAÑOS AJUSTADOS Y EQUILIBRADOS) --- */
@@ -127,7 +127,7 @@
 
         /* --- LISTA DE BOTONES DE REDES SOCIALES --- */
         .lista-botones {
-            padding: 0 15px;
+            padding: 0 15px; /* Padding horizontal para los botones */
             margin-bottom: 30px;
         }
 
@@ -135,7 +135,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            background:#df1a1ae0;
+            background: #df1a1ae0;
             color: white;
             padding: 12px 18px;
             text-decoration: none;
@@ -148,12 +148,12 @@
             transition: all 0.3s ease;
             animation: slideInDown 0.8s 1.5s ease-out forwards;
             opacity: 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* CAMBIO: Sombreado añadido */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .boton-red:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* CAMBIO: Sombreado intensificado en hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
             background-color: var(--rojo-oscuro);
         }
 
@@ -167,6 +167,7 @@
             display: flex;
             justify-content: space-around;
             background-color: var(--rojo-oscuro);
+            padding: 5px 0; /* Ajusta el padding vertical del menú */
         }
 
         .menu-item {
@@ -211,16 +212,20 @@
             justify-content: center;
             align-items: center;
             backdrop-filter: blur(5px);
+            padding: 20px; /* Añade padding al contenedor del modal */
+            box-sizing: border-box;
         }
         .modal-content {
             background: var(--fondo);
             padding: 30px;
             border-radius: 16px;
             max-width: 500px;
-            width: 90%;
+            width: 90%; /* Ocupa el 90% del ancho disponible */
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
             position: relative;
             animation: scaleInModal 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            max-height: 90vh; /* Limita la altura del modal para que quepa en pantallas pequeñas */
+            overflow-y: auto; /* Permite scroll si el contenido es muy largo */
         }
         .close-modal {
             position: absolute;
@@ -267,7 +272,7 @@
         }
         .mapa-responsive {
             overflow: hidden;
-            padding-bottom: 56.25%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
             position: relative;
             height: 0;
             border-radius: 12px;
@@ -292,6 +297,7 @@
 <body>
     <div class="tarjeta">
         <div class="header">
+            <!-- Fallback image for logo in case the primary one fails to load -->
             <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLEJdYvzriVkj13c5g71Je6ZE0gbi0nwJUyQ&s" alt="Logo de Mr. Chicken" onerror="this.onerror=null;this.src='https://placehold.co/110x110/D32F2F/FFFFFF?text=Mr.+C';">
         </div>
         
@@ -342,10 +348,12 @@
     </div>
 
     <script>
+        // Get references to the modal elements
         const modalContainer = document.getElementById('modal-container');
         const modalBody = document.getElementById('modal-body');
         const closeModalButton = document.getElementById('close-modal');
 
+        // Define the content for each modal section
         const modalContent = {
             info: `
                 <h2><i class="fas fa-info-circle"></i> Información</h2>
@@ -374,23 +382,32 @@
             `
         };
 
+        /**
+         * Displays the modal with content based on the provided key.
+         * @param {string} contentKey - The key corresponding to the desired modal content.
+         */
         function showModal(contentKey) {
-            modalBody.innerHTML = modalContent[contentKey];
-            modalContainer.style.display = 'flex';
+            modalBody.innerHTML = modalContent[contentKey]; // Set the modal content
+            modalContainer.style.display = 'flex'; // Show the modal
         }
 
+        /**
+         * Hides the modal.
+         */
         function closeModal() {
-            modalContainer.style.display = 'none';
+            modalContainer.style.display = 'none'; // Hide the modal
         }
 
-        closeModalButton.addEventListener('click', closeModal);
+        // Event listeners for closing the modal
+        closeModalButton.addEventListener('click', closeModal); // Close button click
         modalContainer.addEventListener('click', (event) => {
+            // Close if clicked outside the modal content
             if (event.target === modalContainer) {
                 closeModal();
             }
         });
         
-        // Cierra el modal con la tecla 'Escape'
+        // Close the modal with the 'Escape' key
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
                 closeModal();
