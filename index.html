@@ -21,7 +21,7 @@
             --rojo-marca: #D32F2F;
             --rojo-oscuro: #B71C1C;
             --amarillo-marca: #FFC107;
-            --verde-marca: #f6f6f6; /* Color verde para el borde */
+            --verde-marca: #4CAF50; /* Verde más vibrante para WhatsApp */
             --texto-principal: #212121;
             --texto-secundario: #616161;
             --fondo: #ffffff;
@@ -54,7 +54,6 @@
             flex-direction: column;
             text-align: center;
             animation: fadeInCard 1s ease-out forwards;
-            /* Sin borde, sombra o radio para la vista de pantalla completa móvil */
         }
 
         /* --- ENCABEZADO CON PORTADA Y PERFIL --- */
@@ -62,7 +61,7 @@
             position: relative;
             height: 150px;
             background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)), url('https://images.pexels.com/photos/2725744/pexels-photo-2725744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
-            flex-shrink: 0; /* Evita que el encabezado se encoja */
+            flex-shrink: 0; 
         }
 
         .logo {
@@ -70,7 +69,7 @@
             height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid var(--verde-marca); /* Borde verde */
+            border: 5px solid #f6f6f6;
             box-shadow: 0 8px 25px rgba(0,0,0,0.15);
             position: absolute;
             bottom: -55px;
@@ -82,13 +81,13 @@
 
         /* --- CUERPO DE LA TARJETA --- */
         .cuerpo {
-            padding: 70px 30px 30px 30px;
-            flex: 1; /* Hace que el cuerpo crezca para llenar el espacio disponible */
-            overflow-y: auto; /* Permite el desplazamiento solo para el cuerpo */
-            -webkit-overflow-scrolling: touch; /* Desplazamiento suave en iOS */
+            padding: 70px 20px 30px 20px;
+            flex: 1;
+            overflow-y: auto;
+            -webkit-overflow-scrolling: touch;
         }
 
-        /* --- TEXTOS (TAMAÑOS AJUSTADOS Y EQUILIBRADOS) --- */
+        /* --- TEXTOS --- */
         .nombre {
             font-family: 'Oswald', sans-serif;
             font-size: 2.2em;
@@ -103,7 +102,7 @@
         .titulo {
             font-size: 1em;
             font-weight: 700;
-            color: #645c5c;
+            color: #d7170d;
             margin: 5px 0 15px 0;
             animation: slideInDown 0.8s 0.8s ease-out forwards;
             opacity: 0;
@@ -111,24 +110,65 @@
         }
 
         .descripcion {
-            font-size: 0.9em;
+            font-size: 0.95em; /* Ligeramente más grande */
             color: var(--texto-secundario);
             margin-bottom: 25px;
             line-height: 1.6;
             animation: slideInDown 0.8s 1s ease-out forwards;
             opacity: 0;
+            max-width: 340px; /* Evita que se estire demasiado en pantallas anchas */
+            margin-left: auto;
+            margin-right: auto;
         }
         
         .seccion-titulo {
             font-family: 'Oswald', sans-serif;
             font-size: 1.1em;
             color: #4b544b;
+            margin-top: 30px;
             margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
             font-weight: 600;
             animation: slideInDown 0.8s 1.2s ease-out forwards;
             opacity: 0;
+        }
+        
+        /* --- BOTONES DE ACCIÓN RÁPIDA --- */
+        .acciones-rapidas {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            animation: slideInDown 0.8s 1.2s ease-out forwards;
+            opacity: 0;
+        }
+
+        .boton-accion {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: white;
+            padding: 10px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-size: 0.8em;
+            font-weight: 500;
+            width: 120px;
+            height: 60px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .boton-accion i {
+            font-size: 1.5em;
+            margin-bottom: 5px;
+        }
+        .boton-accion.llamar { background-color: var(--rojo-marca); }
+        .boton-accion.whatsapp { background-color: var(--verde-marca); }
+        .boton-accion:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
         }
 
         /* --- LISTA DE BOTONES DE REDES SOCIALES --- */
@@ -154,12 +194,12 @@
             transition: all 0.3s ease;
             animation: slideInDown 0.8s 1.5s ease-out forwards;
             opacity: 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* CAMBIO: Sombreado añadido */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
         }
 
         .boton-red:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25); /* CAMBIO: Sombreado intensificado en hover */
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
             background-color: var(--rojo-oscuro);
         }
 
@@ -168,17 +208,17 @@
             margin-right: 12px;
         }
         
-        /* --- MENÚ INFERIOR INTERACTIVO (CON TEXTO) --- */
+        /* --- MENÚ INFERIOR INTERACTIVO --- */
         .menu-interactivo {
             display: flex;
             justify-content: space-around;
             background-color: var(--rojo-oscuro);
-            flex-shrink: 0; /* Evita que el pie de página se encoja */
+            flex-shrink: 0;
         }
 
         .menu-item {
             flex: 1;
-            padding: 5px 5px;
+            padding: 5px;
             color: #ffffff;
             cursor: pointer;
             transition: background-color 0.3s ease, color 0.3s ease;
@@ -187,6 +227,8 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            border: none;
+            background: none;
         }
         
         .menu-item:hover {
@@ -205,7 +247,7 @@
             letter-spacing: 0.5px;
         }
 
-        /* --- VENTANAS MODALES (Estilos consistentes) --- */
+        /* --- VENTANAS MODALES --- */
         .modal-container {
             display: none;
             position: fixed;
@@ -288,6 +330,34 @@
             position: absolute;
             border: 0;
         }
+        /* Estilos para el fallback de compartir */
+        .share-fallback-container {
+            display: flex;
+            margin-top: 20px;
+        }
+        #share-url-input {
+            flex-grow: 1;
+            border: 1px solid var(--borde-suave);
+            padding: 10px;
+            border-radius: 8px 0 0 8px;
+            background-color: var(--fondo-alternativo);
+            color: var(--texto-secundario);
+            font-size: 0.9em;
+        }
+        #copy-link-button {
+            padding: 10px 15px;
+            border: none;
+            background-color: var(--rojo-marca);
+            color: white;
+            border-radius: 0 8px 8px 0;
+            cursor: pointer;
+            font-weight: 500;
+            transition: background-color 0.2s;
+        }
+        #copy-link-button:hover {
+            background-color: var(--rojo-oscuro);
+        }
+
 
         /* --- Media Query para Vista de Escritorio/Tableta --- */
         @media screen and (min-width: 481px) {
@@ -307,12 +377,12 @@
                 border-radius: 24px;
                 box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
                 border: 1px solid var(--borde-suave);
-                overflow: hidden; /* Vuelve a aplicar overflow hidden para las esquinas redondeadas */
+                overflow: hidden;
             }
 
             .cuerpo {
-                flex: initial; /* Restablece la propiedad flex */
-                overflow-y: visible; /* Restablece el desbordamiento */
+                flex: initial;
+                overflow-y: visible;
             }
         }
 
@@ -333,37 +403,52 @@
             <h1 class="nombre">Mr. Chicken</h1>
             <p class="titulo">El Sabor Auténtico de Quevedo</p>
             <p class="descripcion">
-                Especialistas en crear momentos inolvidables a través del sabor.
+                El sabor que nos une en Quevedo. Ingredientes frescos, recetas únicas y momentos para recordar.
             </p>
+
+            <!-- SECCIÓN DE ACCIONES RÁPIDAS -->
+            <div class="acciones-rapidas">
+                <a href="tel:+593999999999" class="boton-accion llamar" aria-label="Llamar a Mr. Chicken">
+                    <i class="fas fa-phone"></i>
+                    <span>Llamar</span>
+                </a>
+                <a href="https://wa.me/593999999999?text=Hola,%20vengo%20de%20su%20tarjeta%20digital.%20Quisiera%20más%20información." target="_blank" class="boton-accion whatsapp" aria-label="Enviar un mensaje por WhatsApp a Mr. Chicken">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>WhatsApp</span>
+                </a>
+            </div>
 
             <div class="lista-botones">
                 <h3 class="seccion-titulo">Síguenos en Redes</h3>
-                <a href="https://tiktok.com/@tucuenta" target="_blank" class="boton-red tiktok">
+                <a href="https://tiktok.com/@mrchickenquevedo" target="_blank" class="boton-red tiktok" aria-label="Visita nuestro perfil de TikTok">
                     <i class="fab fa-tiktok"></i> TikTok
                 </a>
-                <a href="https://youtube.com/tucanal" target="_blank" class="boton-red youtube">
+                <a href="https://youtube.com/@mrchickenquevedo" target="_blank" class="boton-red youtube" aria-label="Visita nuestro canal de YouTube">
                     <i class="fab fa-youtube"></i> YouTube
                 </a>
-                <a href="https://facebook.com/tupagina" target="_blank" class="boton-red facebook">
+                <a href="https://facebook.com/mrchickenquevedo" target="_blank" class="boton-red facebook" aria-label="Visita nuestra página de Facebook">
                     <i class="fab fa-facebook-f"></i> Facebook
                 </a>
             </div>
         </div>
         
-        <!-- El menú ahora está fuera del 'cuerpo' para pegarse al fondo de la tarjeta -->
         <div class="menu-interactivo">
-            <div class="menu-item" onclick="showModal('info')" title="Información">
+            <button class="menu-item" onclick="showModal('info')" title="Información" aria-label="Ver información de contacto y horarios">
                 <i class="fas fa-info-circle menu-item-icon"></i>
                 <span class="menu-item-text">Info</span>
-            </div>
-            <div class="menu-item" onclick="showModal('menu')" title="Nuestro Menú">
+            </button>
+            <button class="menu-item" onclick="showModal('menu')" title="Nuestro Menú" aria-label="Ver nuestro menú de comidas">
                 <i class="fas fa-utensils menu-item-icon"></i>
                 <span class="menu-item-text">Menú</span>
-            </div>
-            <div class="menu-item" onclick="showModal('location')" title="Ubicación">
+            </button>
+            <button class="menu-item" onclick="showModal('location')" title="Ubicación" aria-label="Ver nuestra ubicación en el mapa">
                 <i class="fas fa-map-marker-alt menu-item-icon"></i>
                 <span class="menu-item-text">Lugar</span>
-            </div>
+            </button>
+            <button class="menu-item" id="shareButton" title="Compartir" aria-label="Compartir esta tarjeta de presentación">
+                <i class="fas fa-share-alt menu-item-icon"></i>
+                <span class="menu-item-text">Compartir</span>
+            </button>
         </div>
     </div>
 
@@ -379,7 +464,9 @@
         const modalContainer = document.getElementById('modal-container');
         const modalBody = document.getElementById('modal-body');
         const closeModalButton = document.getElementById('close-modal');
+        const shareButton = document.getElementById('shareButton');
 
+        // RECUERDA: Actualiza el número de teléfono y los enlaces a redes sociales
         const modalContent = {
             info: `
                 <h2><i class="fas fa-info-circle"></i> Información</h2>
@@ -405,12 +492,42 @@
                 <div class="mapa-responsive">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.279865183818!2d-79.4646813857335!3d-1.028889999172421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902b18b14a0d9c3b%3A0x1b1d833e9e1e3e4d!2sParque%20Central%20de%20Quevedo!5e0!3m2!1ses!2sec!4v1678886400000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
+            `,
+            'share-fallback': `
+                <h2><i class="fas fa-share-alt"></i> Compartir Tarjeta</h2>
+                <p>Tu navegador no soporta la función de compartir. ¡Copia el enlace y compártelo donde quieras!</p>
+                <div class="share-fallback-container">
+                    <input type="text" value="${window.location.href}" readonly id="share-url-input">
+                    <button id="copy-link-button"><i class="fas fa-copy"></i> Copiar</button>
+                </div>
             `
         };
 
         function showModal(contentKey) {
             modalBody.innerHTML = modalContent[contentKey];
             modalContainer.style.display = 'flex';
+
+            // Si el modal es el de compartir, añade el listener para el botón de copiar
+            if (contentKey === 'share-fallback') {
+                const copyButton = document.getElementById('copy-link-button');
+                const urlInput = document.getElementById('share-url-input');
+                
+                copyButton.addEventListener('click', () => {
+                    // Crea un textarea temporal para usar execCommand
+                    const tempTextArea = document.createElement('textarea');
+                    tempTextArea.value = urlInput.value;
+                    document.body.appendChild(tempTextArea);
+                    tempTextArea.select();
+                    document.execCommand('copy');
+                    document.body.removeChild(tempTextArea);
+
+                    // Da feedback visual al usuario
+                    copyButton.innerHTML = '<i class="fas fa-check"></i> ¡Copiado!';
+                    setTimeout(() => {
+                        copyButton.innerHTML = '<i class="fas fa-copy"></i> Copiar';
+                    }, 2000);
+                });
+            }
         }
 
         function closeModal() {
@@ -424,10 +541,29 @@
             }
         });
         
-        // Cierra el modal con la tecla 'Escape'
         document.addEventListener('keydown', (event) => {
             if (event.key === 'Escape') {
                 closeModal();
+            }
+        });
+
+        // Lógica para el botón de compartir
+        shareButton.addEventListener('click', async () => {
+            const shareData = {
+                title: 'Mr. Chicken - Tarjeta Digital',
+                text: '¡Descubre el sabor auténtico de Quevedo con Mr. Chicken!',
+                url: window.location.href
+            };
+            
+            if (navigator.share) {
+                try {
+                    await navigator.share(shareData);
+                } catch (err) {
+                    console.log('El usuario canceló la acción de compartir.');
+                }
+            } else {
+                // Fallback para navegadores que no soportan la API
+                showModal('share-fallback');
             }
         });
     </script>
