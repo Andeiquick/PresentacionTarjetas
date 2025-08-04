@@ -50,7 +50,7 @@
         .header {
             position: relative;
             height: 140px;
-            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('https://images.pexels.com/photos/8112201/pexels-photo-8112201.jpeg') no-repeat center top/cover;
+            background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.5)), url('https://images.pexels.com/photos/6077326/pexels-photo-6077326.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
         }
 
         .logo {
@@ -152,6 +152,11 @@
             background: var(--color-primario);
             color: white;
         }
+        
+        .boton.whatsapp-pulse {
+            animation: slideInDown 0.8s 1.5s ease-out forwards, 
+                       pulse 3s infinite 2.5s ease-in-out;
+        }
 
         .boton:hover {
             transform: translateY(-3px);
@@ -237,6 +242,22 @@
         @keyframes fadeInCard { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
         @keyframes scaleIn { from { opacity: 0; transform: translateX(-50%) scale(0.6); } to { opacity: 1; transform: translateX(-50%) scale(1); } }
         @keyframes slideInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1) translateY(0);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+            50% {
+                transform: scale(1.05) translateY(0);
+                box-shadow: 0 6px 20px rgba(197, 154, 101, 0.3);
+            }
+            100% {
+                transform: scale(1) translateY(0);
+                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            }
+        }
+
     </style>
 </head>
 <body>
@@ -262,12 +283,12 @@
             </p>
             
             <div class="seccion-botones">
-                <h3 class="seccion-subtitulo">Agenda tu cita ahora 👇</h3>
+                <h3 class="seccion-subtitulo">👇 Agenda tu cita ahora 👇</h3>
                 <div class="botones-contacto">
-                    <a href="https://wa.me/593123456789" target="_blank" class="boton primario">
+                    <a href="https://wa.me/593981653921?text=Hola,%20quiero%20agendar%20una%20cita" target="_blank" class="boton primario whatsapp-pulse">
                         <i class="fab fa-whatsapp"></i> Whatsapp
                     </a>
-                    <a href="tel:+593123456789" class="boton">
+                    <a href="tel:+593981653921" class="boton">
                         <i class="fas fa-phone"></i> Llámanos
                     </a>
                 </div>
