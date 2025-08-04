@@ -3,63 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mr. Chicken - Tarjeta de Presentación Digital</title>
+    <title>Dra. Mieles Cedeño - Tarjeta de Presentación Elegante</title>
     
     <!-- Fuentes de Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-    
-    <!-- Iconos de Font Awesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <!-- Iconos de Font Awesome (usados en los botones de contacto) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
+
     <style>
-        /* --- PALETA DE COLORES Y VARIABLES --- */
         :root {
-            --rojo-marca: #D32F2F;
-            --rojo-oscuro: #B71C1C;
-            --amarillo-marca: #FFC107;
-            --verde-marca: #f6f6f6; /* Color verde para el borde */
-            --texto-principal: #212121;
-            --texto-secundario: #616161;
-            --fondo: #ffffff;
-            --fondo-alternativo: #f5f5f5;
-            --borde-suave: #eeeeee;
+            --color-primario: #c59a65; /* Tono dorado sofisticado */
+            --color-fondo-tarjeta: #f2f2e3; /* Fondo base solicitado */
+            --color-texto-principal: #2d2d2d; /* Gris oscuro/carbón */
+            --color-texto-secundario: #6c6c6c;
+            --color-fondo-botones: #2d2d2d;
         }
 
-        /* --- ESTILOS GENERALES Y MEJORAS DE RENDERIZADO --- */
         body {
-            font-family: 'Inter', sans-serif;
+            font-family: 'Poppins', sans-serif;
             margin: 0;
-            padding: 20px; /* Añade padding para espacio vertical y horizontal */
+            padding: 20px;
             display: flex;
             justify-content: center;
             align-items: center;
-            min-height: 100vh; /* Asegura que ocupe al menos el 100% del alto de la ventana */
-            background-color: var(--fondo-alternativo);
-            box-sizing: border-box; /* Incluye padding y border en el ancho/alto total */
+            min-height: 100vh;
+            background-color: #e9e9e9;
+            box-sizing: border-box;
             -webkit-font-smoothing: antialiased;
             text-rendering: optimizeLegibility;
         }
 
-        /* --- CONTENEDOR PRINCIPAL DE LA TARJETA --- */
         .tarjeta {
-            width: 100%; /* Ocupa el 100% del ancho disponible */
-            max-width: 400px; /* Pero no más de 400px en pantallas grandes */
-            background: var(--fondo);
-            border-radius: 24px;
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 380px;
+            background-color: var(--color-fondo-tarjeta);
+            border-radius: 12px;
+            box-shadow: 0 10px 35px rgba(0, 0, 0, 0.1);
             overflow: hidden;
             text-align: center;
             animation: fadeInCard 1s ease-out forwards;
-            border: 1px solid var(--borde-suave);
         }
 
-        /* --- ENCABEZADO CON PORTADA Y PERFIL --- */
         .header {
             position: relative;
-            height: 150px;
-            background: linear-gradient(rgba(0,0,0,0.1), rgba(0,0,0,0.15)), url('https://images.pexels.com/photos/2725744/pexels-photo-2725744.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1') no-repeat center center/cover;
+            height: 140px;
+            background: linear-gradient(rgba(0,0,0,0.2), rgba(0,0,0,0.3)), url('https://images.pexels.com/photos/8112201/pexels-photo-8112201.jpeg') no-repeat center top/cover;
         }
 
         .logo {
@@ -67,352 +58,240 @@
             height: 110px;
             border-radius: 50%;
             object-fit: cover;
-            border: 5px solid var(--verde-marca); /* Borde verde */
-            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+            object-position: center top;
+            border: 4px solid var(--color-fondo-tarjeta);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
             position: absolute;
-            bottom: -55px; /* Centra verticalmente sobre el borde inferior del header */
+            bottom: -55px;
             left: 50%;
-            transform: translateX(-50%); /* Centra horizontalmente */
+            transform: translateX(-50%);
             animation: scaleIn 0.8s 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             opacity: 0;
         }
 
-        /* --- CUERPO DE LA TARJETA --- */
         .cuerpo {
-            padding: 70px 30px 30px 30px; /* Ajusta el padding para el contenido */
+            padding: 70px 25px 30px 25px; /* Espaciado ajustado */
         }
 
-        /* --- TEXTOS (TAMAÑOS AJUSTADOS Y EQUILIBRADOS) --- */
         .nombre {
-            font-family: 'Oswald', sans-serif;
-            font-size: 2.2em;
-            color: #000000;
-            margin: 0;
-            line-height: 1.2;
-            text-transform: uppercase;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7em; /* Tamaño de fuente ajustado */
+            color: var(--color-texto-principal);
+            margin: 0 0 5px 0;
+            line-height: 1.3;
             animation: slideInDown 0.8s 0.6s ease-out forwards;
             opacity: 0;
+            font-weight: 600;
         }
 
         .titulo {
-            font-size: 1em;
-            font-weight: 700;
-            color: #372d2d;
-            margin: 5px 0 15px 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8em; /* Tamaño de fuente ajustado */
+            font-weight: 500;
+            color: var(--color-primario);
+            margin: 0 0 18px 0;
             animation: slideInDown 0.8s 0.8s ease-out forwards;
             opacity: 0;
-            letter-spacing: 0.5px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .descripcion {
-            font-size: 0.9em;
-            color: var(--texto-secundario);
-            margin-bottom: 25px;
-            line-height: 1.6;
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.85em; /* Tamaño de fuente ajustado */
+            color: var(--color-texto-secundario);
+            margin-bottom: 30px;
+            line-height: 1.7;
             animation: slideInDown 0.8s 1s ease-out forwards;
             opacity: 0;
         }
+
+        .seccion-botones {
+            margin-bottom: 30px;
+        }
         
-        .seccion-titulo {
-            font-family: 'Oswald', sans-serif;
-            font-size: 1.1em;
-            color: #4b544b;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+        .seccion-subtitulo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.75em;
             font-weight: 600;
+            color: #4f4f4f; /* Gris más oscuro para mayor claridad */
+            margin-bottom: 15px;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
             animation: slideInDown 0.8s 1.2s ease-out forwards;
             opacity: 0;
         }
 
-        /* --- LISTA DE BOTONES DE REDES SOCIALES --- */
-        .lista-botones {
-            padding: 0 15px; /* Padding horizontal para los botones */
-            margin-bottom: 30px;
+        .botones-contacto {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
         }
 
-        .boton-red {
+        .boton {
             display: flex;
             align-items: center;
             justify-content: center;
-            background: #df1a1ae0;
+            background: var(--color-fondo-botones);
             color: white;
-            padding: 12px 18px;
+            padding: 10px 15px;
             text-decoration: none;
+            font-family: 'Poppins', sans-serif;
             font-weight: 500;
-            font-size: 0.85em;
-            text-transform: uppercase;
+            font-size: 0.8em;
             letter-spacing: 0.5px;
-            margin-bottom: 12px;
-            border-radius: 12px;
+            border-radius: 8px;
             transition: all 0.3s ease;
             animation: slideInDown 0.8s 1.5s ease-out forwards;
             opacity: 0;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        .boton-red:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-            background-color: var(--rojo-oscuro);
-        }
-
-        .boton-red i {
-            font-size: 1.2em;
-            margin-right: 12px;
-        }
-        
-        /* --- MENÚ INFERIOR INTERACTIVO (CON TEXTO) --- */
-        .menu-interactivo {
-            display: flex;
-            justify-content: space-around;
-            background-color: var(--rojo-oscuro);
-            padding: 5px 0; /* Ajusta el padding vertical del menú */
-        }
-
-        .menu-item {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             flex: 1;
-            padding: 5px 5px;
-            color: #ffffff;
-            cursor: pointer;
-            transition: background-color 0.3s ease, color 0.3s ease;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
         }
         
-        .menu-item:hover {
-            background-color: var(--rojo-marca);
-        }
-
-        .menu-item-icon {
-            font-size: 1.1em;
-            margin-bottom: 3px;
-        }
-        
-        .menu-item-text {
-            font-size: 0.6em;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        /* --- VENTANAS MODALES (Estilos consistentes) --- */
-        .modal-container {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.6);
-            z-index: 1000;
-            justify-content: center;
-            align-items: center;
-            backdrop-filter: blur(5px);
-            padding: 20px; /* Añade padding al contenedor del modal */
-            box-sizing: border-box;
-        }
-        .modal-content {
-            background: var(--fondo);
-            padding: 30px;
-            border-radius: 16px;
-            max-width: 500px;
-            width: 90%; /* Ocupa el 90% del ancho disponible */
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            position: relative;
-            animation: scaleInModal 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            max-height: 90vh; /* Limita la altura del modal para que quepa en pantallas pequeñas */
-            overflow-y: auto; /* Permite scroll si el contenido es muy largo */
-        }
-        .close-modal {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: var(--fondo-alternativo);
-            border: none;
-            color: var(--texto-secundario);
-            font-size: 1.2em;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: background-color 0.2s, color 0.2s;
-        }
-        .close-modal:hover {
-            background-color: var(--rojo-marca);
+        .boton.primario {
+            background: var(--color-primario);
             color: white;
         }
-        .modal-body h2 {
-            font-family: 'Oswald', sans-serif;
-            color: var(--rojo-marca);
-            margin-top: 0;
-            font-size: 1.8em;
+
+        .boton:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.15);
         }
-        .modal-body p, .modal-body li {
-            color: var(--texto-secundario);
-            line-height: 1.7;
-            font-size: 0.95em;
+        
+        .boton.primario:hover {
+            background: #a98c5b; /* Tono más oscuro para el hover */
         }
-        .modal-body ul {
-            list-style: none;
-            padding-left: 0;
+
+        .boton i {
+            font-size: 1em;
+            margin-right: 8px;
         }
-        .modal-body li {
-            padding: 10px 5px;
-            border-bottom: 1px solid var(--borde-suave);
-        }
-        .modal-body li strong {
-            color: var(--texto-principal);
-        }
-        .mapa-responsive {
-            overflow: hidden;
-            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+
+        .pie-pagina {
+            background-color: var(--color-fondo-botones);
+            padding: 45px 25px 25px 25px; /* Padding superior aumentado para la curva */
             position: relative;
-            height: 0;
-            border-radius: 12px;
-            margin-top: 15px;
+            overflow: hidden;
+            background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/2115367/pexels-photo-2115367.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
+            background-size: cover;
+            background-position: center;
+            margin-top: -30px; /* Superposición para la curva */
+            clip-path: url(#footer-curve);
         }
-        .mapa-responsive iframe {
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 100%;
-            position: absolute;
-            border: 0;
+        
+        .pie-pagina-titulo,
+        .pie-pagina .iconos-redes {
+            position: relative;
+            z-index: 1;
+        }
+
+        .pie-pagina-titulo {
+            font-family: 'Poppins', sans-serif;
+            font-size: 0.8em; /* Tamaño de fuente aumentado */
+            font-weight: 500;
+            color: #ffffff; /* Color de texto: Blanco */
+            margin: 0 0 18px 0;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .pie-pagina .iconos-redes {
+            display: flex;
+            justify-content: center;
+            gap: 12px; /* Espaciado reducido */
+        }
+
+        .pie-pagina .icono-red {
+            transition: all 0.3s ease;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+        }
+        
+        .pie-pagina .icono-red .svg-icon {
+            width: 20px;
+            height: 20px;
+            background-color: var(--color-primario);
+            -webkit-mask-size: contain;
+            mask-size: contain;
+            -webkit-mask-position: center;
+            mask-position: center;
+            -webkit-mask-repeat: no-repeat;
+            mask-repeat: no-repeat;
+            transition: background-color 0.3s ease;
+        }
+        
+        .pie-pagina .icono-red:hover {
+            background-color: var(--color-primario);
+            transform: translateY(-3px);
+        }
+
+        .pie-pagina .icono-red:hover .svg-icon {
+            background-color: #ffffff;
         }
 
         /* --- ANIMACIONES --- */
-        @keyframes fadeInCard { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes scaleIn { from { opacity: 0; transform: translateX(-50%) scale(0.5); } to { opacity: 1; transform: translateX(-50%) scale(1); } }
-        @keyframes slideInDown { from { opacity: 0; transform: translateY(-15px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes scaleInModal { from { opacity: 0; transform: scale(0.9); } to { opacity: 1; transform: scale(1); } }
+        @keyframes fadeInCard { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes scaleIn { from { opacity: 0; transform: translateX(-50%) scale(0.6); } to { opacity: 1; transform: translateX(-50%) scale(1); } }
+        @keyframes slideInDown { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
     </style>
 </head>
 <body>
+    <!-- SVG para definir la forma curvada del pie de página -->
+    <svg height="0" width="0">
+        <defs>
+            <clipPath id="footer-curve" clipPathUnits="objectBoundingBox">
+                <path d="M 0,0 C 0.3,0.2 0.7,0.2 1,0 L 1,1 L 0,1 Z" />
+            </clipPath>
+        </defs>
+    </svg>
+
     <div class="tarjeta">
         <div class="header">
-            <!-- Fallback image for logo in case the primary one fails to load -->
-            <img class="logo" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSLEJdYvzriVkj13c5g71Je6ZE0gbi0nwJUyQ&s" alt="Logo de Mr. Chicken" onerror="this.onerror=null;this.src='https://placehold.co/110x110/D32F2F/FFFFFF?text=Mr.+C';">
+            <img class="logo" src="https://images.pexels.com/photos/3769021/pexels-photo-3769021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Logo de Dra. Mieles Cedeño" onerror="this.onerror=null;this.src='https://placehold.co/120x120/B99A6B/FFFFFF?text=MC';">
         </div>
         
         <div class="cuerpo">
-            <h1 class="nombre">Mr. Chicken</h1>
-            <p class="titulo">El Sabor Auténtico de Quevedo</p>
+            <h1 class="nombre">Dra. Mieles Cedeño</h1>
+            <p class="titulo">Abogada – Derecho Civil y Laboral</p>
             <p class="descripcion">
-                Especialistas en crear momentos inolvidables a través del sabor.
+                Asesoría legal ética, clara y efectiva para personas y empresas que necesitan soluciones reales y seguras.
             </p>
-
-            <div class="lista-botones">
-                <h3 class="seccion-titulo">Síguenos en Redes</h3>
-                <a href="https://tiktok.com/@tucuenta" target="_blank" class="boton-red tiktok">
-                    <i class="fab fa-tiktok"></i> TikTok
-                </a>
-                <a href="https://youtube.com/tucanal" target="_blank" class="boton-red youtube">
-                    <i class="fab fa-youtube"></i> YouTube
-                </a>
-                <a href="https://facebook.com/tupagina" target="_blank" class="boton-red facebook">
-                    <i class="fab fa-facebook-f"></i> Facebook
-                </a>
+            
+            <div class="seccion-botones">
+                <h3 class="seccion-subtitulo">Contacto Directo</h3>
+                <div class="botones-contacto">
+                    <a href="https://wa.me/593123456789" target="_blank" class="boton primario">
+                        <i class="fab fa-whatsapp"></i> Whatsapp
+                    </a>
+                    <a href="tel:+593123456789" class="boton">
+                        <i class="fas fa-phone"></i> Llámanos
+                    </a>
+                </div>
             </div>
         </div>
-        
-        <!-- El menú ahora está fuera del 'cuerpo' para pegarse al fondo de la tarjeta -->
-        <div class="menu-interactivo">
-            <div class="menu-item" onclick="showModal('info')" title="Información">
-                <i class="fas fa-info-circle menu-item-icon"></i>
-                <span class="menu-item-text">Info</span>
-            </div>
-            <div class="menu-item" onclick="showModal('menu')" title="Nuestro Menú">
-                <i class="fas fa-utensils menu-item-icon"></i>
-                <span class="menu-item-text">Menú</span>
-            </div>
-            <div class="menu-item" onclick="showModal('location')" title="Ubicación">
-                <i class="fas fa-map-marker-alt menu-item-icon"></i>
-                <span class="menu-item-text">Lugar</span>
-            </div>
-        </div>
-    </div>
 
-    <!-- Ventana modal única para toda la información -->
-    <div id="modal-container" class="modal-container">
-        <div id="modal-content" class="modal-content">
-            <button id="close-modal" class="close-modal" aria-label="Cerrar ventana">&times;</button>
-            <div id="modal-body" class="modal-body"></div>
+        <div class="pie-pagina">
+            <h3 class="pie-pagina-titulo">¡Síguenos en redes!</h3>
+            <div class="iconos-redes">
+                <a href="https://tiktok.com/@tucuenta" target="_blank" class="icono-red">
+                    <div class="svg-icon" style="-webkit-mask-image: url(https://api.iconify.design/simple-icons/tiktok.svg); mask-image: url(https://api.iconify.design/simple-icons/tiktok.svg);"></div>
+                </a>
+                <a href="https://youtube.com/tucanal" target="_blank" class="icono-red">
+                     <div class="svg-icon" style="-webkit-mask-image: url(https://api.iconify.design/simple-icons/youtube.svg); mask-image: url(https://api.iconify.design/simple-icons/youtube.svg);"></div>
+                </a>
+                <a href="https://facebook.com/tupagina" target="_blank" class="icono-red">
+                     <div class="svg-icon" style="-webkit-mask-image: url(https://api.iconify.design/simple-icons/facebook.svg); mask-image: url(https://api.iconify.design/simple-icons/facebook.svg);"></div>
+                </a>
+            </div>
         </div>
     </div>
 
     <script>
-        // Get references to the modal elements
-        const modalContainer = document.getElementById('modal-container');
-        const modalBody = document.getElementById('modal-body');
-        const closeModalButton = document.getElementById('close-modal');
-
-        // Define the content for each modal section
-        const modalContent = {
-            info: `
-                <h2><i class="fas fa-info-circle"></i> Información</h2>
-                <p>Bienvenido a Mr. Chicken, tu destino para disfrutar de sabores auténticos y experiencias memorables en el corazón de Quevedo.</p>
-                <ul>
-                    <li><strong>Dirección:</strong> Calle 123, Quevedo, Ecuador</li>
-                    <li><strong>Teléfono:</strong> +593 999 999 999</li>
-                    <li><strong>Horarios:</strong> Lunes a Domingo, 10:00 AM - 10:00 PM</li>
-                </ul>
-            `,
-            menu: `
-                <h2><i class="fas fa-utensils"></i> Nuestro Menú</h2>
-                <ul>
-                    <li><strong>Alitas Picantes:</strong> Alitas de pollo fritas con nuestra mezcla secreta de especias.</li>
-                    <li><strong>Hamburguesa Gourmet:</strong> Carne premium, queso derretido y vegetales frescos.</li>
-                    <li><strong>Papas Fritas:</strong> Papas doradas acompañadas de nuestro exclusivo ketchup casero.</li>
-                    <li><strong>Postre del Día:</strong> Delicioso pastel de chocolate artesanal.</li>
-                </ul>
-            `,
-            location: `
-                <h2><i class="fas fa-map-marker-alt"></i> Ubicación</h2>
-                <p>Encuéntranos fácilmente en el Parque Central de Quevedo:</p>
-                <div class="mapa-responsive">
-                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.279865183818!2d-79.4646813857335!3d-1.028889999172421!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x902b18b14a0d9c3b%3A0x1b1d833e9e1e3e4d!2sParque%20Central%20de%20Quevedo!5e0!3m2!1ses!2sec!4v1678886400000" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
-            `
-        };
-
-        /**
-         * Displays the modal with content based on the provided key.
-         * @param {string} contentKey - The key corresponding to the desired modal content.
-         */
-        function showModal(contentKey) {
-            modalBody.innerHTML = modalContent[contentKey]; // Set the modal content
-            modalContainer.style.display = 'flex'; // Show the modal
-        }
-
-        /**
-         * Hides the modal.
-         */
-        function closeModal() {
-            modalContainer.style.display = 'none'; // Hide the modal
-        }
-
-        // Event listeners for closing the modal
-        closeModalButton.addEventListener('click', closeModal); // Close button click
-        modalContainer.addEventListener('click', (event) => {
-            // Close if clicked outside the modal content
-            if (event.target === modalContainer) {
-                closeModal();
-            }
-        });
-        
-        // Close the modal with the 'Escape' key
-        document.addEventListener('keydown', (event) => {
-            if (event.key === 'Escape') {
-                closeModal();
-            }
-        });
+        // Este archivo ya no es necesario ya que se eliminó el menú interactivo y el modal.
     </script>
 </body>
 </html>
