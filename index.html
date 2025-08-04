@@ -178,10 +178,11 @@
             position: relative;
             overflow: hidden;
             background-image: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://images.pexels.com/photos/2115367/pexels-photo-2115367.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1');
-            background-size: cover;
+            background-size: 150%; /* Aumentado para la animación */
             background-position: center;
             margin-top: -30px; /* Superposición para la curva */
             clip-path: url(#footer-curve);
+            animation: moveBackground 40s linear infinite;
         }
         
         .pie-pagina-titulo,
@@ -249,13 +250,18 @@
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             }
             50% {
-                transform: scale(1.05) translateY(0);
+                transform: scale(1.03);
                 box-shadow: 0 6px 20px rgba(197, 154, 101, 0.3);
             }
             100% {
                 transform: scale(1) translateY(0);
                 box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
             }
+        }
+
+        @keyframes moveBackground {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
         }
 
     </style>
@@ -283,9 +289,9 @@
             </p>
             
             <div class="seccion-botones">
-                <h3 class="seccion-subtitulo">👇 Agenda tu cita ahora 👇</h3>
+                <h3 class="seccion-subtitulo">Consulta Legal</h3>
                 <div class="botones-contacto">
-                    <a href="https://wa.me/593981653921?text=Hola,%20quiero%20agendar%20una%20cita" target="_blank" class="boton primario whatsapp-pulse">
+                    <a href="https://wa.me/593981653921" target="_blank" class="boton primario whatsapp-pulse">
                         <i class="fab fa-whatsapp"></i> Whatsapp
                     </a>
                     <a href="tel:+593981653921" class="boton">
