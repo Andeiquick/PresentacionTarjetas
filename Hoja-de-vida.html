@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolívar - Diseñador Gráfico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+            background-color: #e0e0e0;
+        }
+        .progress-fill {
+            height: 100%;
+            border-radius: 4px;
+            background-color: #4CAF50;
+        }
+        .color-header {
+            height: 6px;
+            background: linear-gradient(90deg, #2196F3, #FF9800, #4CAF50, #F44336);
+        }
+        .section {
+            transition: all 0.3s ease;
+        }
+        .section-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .section.active .section-content {
+            max-height: 1000px;
+        }
+        .portfolio-item {
+            transition: transform 0.3s ease;
+        }
+        .portfolio-item:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Color Header -->
+    <div class="color-header w-full"></div>
+
+    <!-- Home Section -->
+    <section id="home" class="py-16 px-4 md:px-8 text-center">
+        <div class="max-w-4xl mx-auto">
+            <div class="w-40 h-40 mx-auto rounded-full overflow-hidden border-4 border-white shadow-lg mb-6">
+                <img src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&w=400" alt="Bolívar" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-4xl md:text-5xl font-bold mb-2">Bolívar Rodríguez</h1>
+            <h2 class="text-2xl md:text-3xl text-blue-600 font-semibold mb-4">Diseñador Gráfico</h2>
+            <p class="text-lg md:text-xl max-w-2xl mx-auto mb-8">
+                Creatividad y tecnología fusionadas para soluciones visuales impactantes. Especializado en branding, diseño web y motion graphics.
+            </p>
+            <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 transform hover:scale-105">
+                <i class="fa fa-download mr-2"></i>Descargar CV
+            </button>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section bg-white py-8 px-4 md:px-8">
+        <div class="max-w-4xl mx-auto">
+            <button class="section-toggle w-full text-left">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 flex justify-between items-center">
+                    <span><i class="fa fa-user text-blue-600 mr-2"></i>Sobre Mí</span>
+                    <i class="fa fa-chevron-down text-gray-400"></i>
+                </h2>
+            </button>
+            <div class="section-content">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Introducción</h3>
+                        <p class="mb-4">
+                            Soy Bolívar, diseñador gráfico con 10 años de experiencia. Domino todas las aplicaciones de Adobe Creative Suite (Photoshop, Illustrator, InDesign, Premiere Pro y After Effects).
+                        </p>
+                        <p class="mb-4">
+                            Estoy graduado en áreas relacionadas con tecnología y desarrollo, combinando creatividad con soluciones tecnológicas. Tengo 28 años y pasión por innovar en el diseño.
+                        </p>
+                        <p>
+                            Mi enfoque se centra en crear identidades visuales memorables y experiencias de usuario intuitivas, siempre buscando el equilibrio perfecto entre estética y funcionalidad.
+                        </p>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Información Personal</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-center">
+                                <i class="fa fa-birthday-cake text-orange-500 mr-3 w-5 text-center"></i>
+                                <span>15 de Marzo, 1995</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-map-marker text-orange-500 mr-3 w-5 text-center"></i>
+                                <span>Bogotá, Colombia</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-envelope text-orange-500 mr-3 w-5 text-center"></i>
+                                <span>bolivar@ejemplo.com</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-phone text-orange-500 mr-3 w-5 text-center"></i>
+                                <span>+57 123 456 7890</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-gray-50 py-8 px-4 md:px-8">
+        <div class="max-w-4xl mx-auto">
+            <button class="section-toggle w-full text-left">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 flex justify-between items-center">
+                    <span><i class="fa fa-cogs text-blue-600 mr-2"></i>Habilidades</span>
+                    <i class="fa fa-chevron-down text-gray-400"></i>
+                </h2>
+            </button>
+            <div class="section-content">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Habilidades Técnicas</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Adobe Photoshop</span>
+                                    <span>95%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 95%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Adobe Illustrator</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 90%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Adobe After Effects</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 85%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Figma</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Idiomas</h3>
+                        <div class="space-y-4">
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Español</span>
+                                    <span>Nativo</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 100%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Inglés</span>
+                                    <span>Avanzado</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 80%"></div>
+                                </div>
+                            </div>
+                            <div>
+                                <div class="flex justify-between mb-1">
+                                    <span>Portugués</span>
+                                    <span>Intermedio</span>
+                                </div>
+                                <div class="progress-bar">
+                                    <div class="progress-fill" style="width: 60%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section bg-white py-8 px-4 md:px-8">
+        <div class="max-w-4xl mx-auto">
+            <button class="section-toggle w-full text-left">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 flex justify-between items-center">
+                    <span><i class="fa fa-briefcase text-blue-600 mr-2"></i>Experiencia Laboral</span>
+                    <i class="fa fa-chevron-down text-gray-400"></i>
+                </h2>
+            </button>
+            <div class="section-content">
+                <div class="space-y-8">
+                    <div class="border-l-4 border-blue-500 pl-6 relative">
+                        <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-blue-500"></div>
+                        <div class="mb-2">
+                            <h3 class="text-xl font-semibold">Diseñador Gráfico Senior</h3>
+                            <p class="text-gray-600">Estudio Creativo Digital | 2019 - Presente</p>
+                        </div>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Liderar el equipo de diseño en proyectos de branding para clientes internacionales.</li>
+                            <li>Desarrollar identidades visuales completas, incluyendo logotipos, paletas de color y guías de estilo.</li>
+                            <li>Crear animaciones y motion graphics para campañas publicitarias.</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-blue-500 pl-6 relative">
+                        <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-blue-500"></div>
+                        <div class="mb-2">
+                            <h3 class="text-xl font-semibold">Diseñador Multimedia</h3>
+                            <p class="text-gray-600">Agencia Visual | 2016 - 2019</p>
+                        </div>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Diseño de interfaces de usuario para aplicaciones móviles y sitios web.</li>
+                            <li>Producción de material gráfico para redes sociales y campañas digitales.</li>
+                            <li>Colaboración con el equipo de desarrollo en proyectos interactivos.</li>
+                        </ul>
+                    </div>
+                    <div class="border-l-4 border-blue-500 pl-6 relative">
+                        <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-blue-500"></div>
+                        <div class="mb-2">
+                            <h3 class="text-xl font-semibold">Diseñador Gráfico Junior</h3>
+                            <p class="text-gray-600">Imprenta Creativa | 2014 - 2016</p>
+                        </div>
+                        <ul class="list-disc pl-5 space-y-2">
+                            <li>Diseño de material impreso: folletos, carteles, tarjetas de presentación.</li>
+                            <li>Preparación de archivos para impresión y seguimiento de producción.</li>
+                            <li>Atención al cliente y desarrollo de propuestas creativas.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section bg-gray-50 py-8 px-4 md:px-8">
+        <div class="max-w-4xl mx-auto">
+            <button class="section-toggle w-full text-left">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 flex justify-between items-center">
+                    <span><i class="fa fa-graduation-cap text-blue-600 mr-2"></i>Educación</span>
+                    <i class="fa fa-chevron-down text-gray-400"></i>
+                </h2>
+            </button>
+            <div class="section-content">
+                <div class="space-y-8">
+                    <div class="border-l-4 border-green-500 pl-6 relative">
+                        <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-green-500"></div>
+                        <div class="mb-2">
+                            <h3 class="text-xl font-semibold">Maestría en Diseño Digital</h3>
+                            <p class="text-gray-600">Universidad Nacional de Colombia | 2018 - 2020</p>
+                        </div>
+                        <p>Especialización en diseño de interacción y experiencias de usuario.</p>
+                    </div>
+                    <div class="border-l-4 border-green-500 pl-6 relative">
+                        <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-green-500"></div>
+                        <div class="mb-2">
+                            <h3 class="text-xl font-semibold">Licenciatura en Diseño Gráfico</h3>
+                            <p class="text-gray-600">Universidad de los Andes | 2011 - 2015</p>
+                        </div>
+                        <p>Enfoque en comunicación visual y diseño editorial.</p>
+                    </div>
+                    <div class="border-l-4 border-green-500 pl-6 relative">
+                        <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-green-500"></div>
+                        <div class="mb-2">
+                            <h3 class="text-xl font-semibold">Certificación en Motion Graphics</h3>
+                            <p class="text-gray-600">Escuela de Artes Visuales | 2017</p>
+                        </div>
+                        <p>Animación 2D y técnicas avanzadas en After Effects.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="section bg-white py-8 px-4 md:px-8">
+        <div class="max-w-4xl mx-auto">
+            <button class="section-toggle w-full text-left">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 flex justify-between items-center">
+                    <span><i class="fa fa-folder-open text-blue-600 mr-2"></i>Portafolio</span>
+                    <i class="fa fa-chevron-down text-gray-400"></i>
+                </h2>
+            </button>
+            <div class="section-content">
+                <div class="flex space-x-2 mb-6">
+                    <button class="filter-btn px-4 py-2 bg-blue-600 text-white rounded-full" data-filter="all">Todos</button>
+                    <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full" data-filter="branding">Branding</button>
+                    <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full" data-filter="web">Diseño Web</button>
+                    <button class="filter-btn px-4 py-2 bg-gray-200 rounded-full" data-filter="motion">Motion</button>
+                </div>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="portfolio-item" data-category="branding">
+                        <div class="bg-gray-100 rounded-lg overflow-hidden">
+                            <img src="https://images.pexels.com/photos/269077/pexels-photo-269077.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Proyecto 1" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-semibold text-lg">Identidad Corporativa - Café</h3>
+                                <p class="text-gray-600">Diseño de marca completa para cafetería artesanal.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="web">
+                        <div class="bg-gray-100 rounded-lg overflow-hidden">
+                            <img src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Proyecto 2" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-semibold text-lg">Diseño UI/UX - App Financiera</h3>
+                                <p class="text-gray-600">Interfaz de usuario para aplicación de banca móvil.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="motion">
+                        <div class="bg-gray-100 rounded-lg overflow-hidden">
+                            <img src="https://images.pexels.com/photos/547114/pexels-photo-547114.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Proyecto 3" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-semibold text-lg">Animación - Campaña Publicitaria</h3>
+                                <p class="text-gray-600">Motion graphics para lanzamiento de producto.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="portfolio-item" data-category="branding">
+                        <div class="bg-gray-100 rounded-lg overflow-hidden">
+                            <img src="https://images.pexels.com/photos/374016/pexels-photo-374016.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Proyecto 4" class="w-full h-48 object-cover">
+                            <div class="p-4">
+                                <h3 class="font-semibold text-lg">Packaging - Línea Orgánica</h3>
+                                <p class="text-gray-600">Diseño de empaques para productos naturales.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Section -->
+    <section id="blog" class="section bg-gray-50 py-8 px-4 md:px-8">
+        <div class="max-w-4xl mx-auto">
+            <button class="section-toggle w-full text-left">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 flex justify-between items-center">
+                    <span><i class="fa fa-pencil text-blue-600 mr-2"></i>Blog</span>
+                    <i class="fa fa-chevron-down text-gray-400"></i>
+                </h2>
+            </button>
+            <div class="section-content">
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-semibold mb-2">La evolución del diseño minimalista en 2023</h3>
+                        <p class="text-gray-500 text-sm mb-3">Publicado el 15 de Junio, 2023</p>
+                        <p class="mb-4">Exploramos las tendencias actuales del minimalismo y cómo se están aplicando en el diseño de interfaces y branding...</p>
+                        <a href="#" class="text-blue-600 font-medium">Leer más →</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-semibold mb-2">Adobe Firefly: ¿Revolución o evolución?</h3>
+                        <p class="text-gray-500 text-sm mb-3">Publicado el 2 de Mayo, 2023</p>
+                        <p class="mb-4">Análisis de las nuevas herramientas de IA de Adobe y su impacto en los flujos de trabajo creativos...</p>
+                        <a href="#" class="text-blue-600 font-medium">Leer más →</a>
+                    </div>
+                    <div class="bg-white p-6 rounded-lg shadow-sm">
+                        <h3 class="text-xl font-semibold mb-2">Diseño accesible: más que una tendencia</h3>
+                        <p class="text-gray-500 text-sm mb-3">Publicado el 10 de Abril, 2023</p>
+                        <p class="mb-4">Cómo implementar principios de accesibilidad en tus proyectos sin sacrificar creatividad...</p>
+                        <a href="#" class="text-blue-600 font-medium">Leer más →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="section bg-white py-8 px-4 md:px-8">
+        <div class="max-w-4xl mx-auto">
+            <button class="section-toggle w-full text-left">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 flex justify-between items-center">
+                    <span><i class="fa fa-quote-left text-blue-600 mr-2"></i>Testimonios</span>
+                    <i class="fa fa-chevron-down text-gray-400"></i>
+                </h2>
+            </button>
+            <div class="section-content">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-orange-50 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cliente" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">María Fernández</h4>
+                                <p class="text-sm text-gray-600">CEO, Café Artesanal</p>
+                            </div>
+                        </div>
+                        <p class="italic">"Bolívar transformó completamente nuestra identidad visual. Su enfoque estratégico y atención al detalle resultaron en una marca que realmente representa nuestros valores."</p>
+                    </div>
+                    <div class="bg-orange-50 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                <img src="https://images.pexels.com/photos/2379004/pexels-photo-2379004.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cliente" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Carlos Gutiérrez</h4>
+                                <p class="text-sm text-gray-600">Director Creativo, Agencia Digital</p>
+                            </div>
+                        </div>
+                        <p class="italic">"Trabajar con Bolívar fue una experiencia excepcional. Su capacidad para combinar estética y funcionalidad en el diseño de interfaces es realmente notable."</p>
+                    </div>
+                    <div class="bg-orange-50 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cliente" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Ana López</h4>
+                                <p class="text-sm text-gray-600">Marketing Manager, Startup Tech</p>
+                            </div>
+                        </div>
+                        <p class="italic">"Las animaciones que creó para nuestra campaña superaron todas las expectativas. Bolívar tiene un ojo único para el movimiento y la narrativa visual."</p>
+                    </div>
+                    <div class="bg-orange-50 p-6 rounded-lg">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-full overflow-hidden mr-4">
+                                <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cliente" class="w-full h-full object-cover">
+                            </div>
+                            <div>
+                                <h4 class="font-semibold">Juan Pérez</h4>
+                                <p class="text-sm text-gray-600">Director de Arte, Estudio Creativo</p>
+                            </div>
+                        </div>
+                        <p class="italic">"Como colega, he visto cómo Bolívar eleva cada proyecto con su creatividad y dominio técnico. Es un profesional completo y siempre está dispuesto a innovar."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section bg-gray-50 py-8 px-4 md:px-8">
+        <div class="max-w-4xl mx-auto">
+            <button class="section-toggle w-full text-left">
+                <h2 class="text-2xl md:text-3xl font-bold mb-4 flex justify-between items-center">
+                    <span><i class="fa fa-envelope text-blue-600 mr-2"></i>Contacto</span>
+                    <i class="fa fa-chevron-down text-gray-400"></i>
+                </h2>
+            </button>
+            <div class="section-content">
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Envíame un mensaje</h3>
+                        <form id="contactForm" class="space-y-4">
+                            <div>
+                                <label for="name" class="block mb-1">Nombre</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="email" class="block mb-1">Email</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">
+                            </div>
+                            <div>
+                                <label for="message" class="block mb-1">Mensaje</label>
+                                <textarea id="message" rows="4" class="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"></textarea>
+                            </div>
+                            <button type="submit" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition duration-300">
+                                Enviar Mensaje
+                            </button>
+                        </form>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4">Información de Contacto</h3>
+                        <ul class="space-y-4">
+                            <li class="flex items-start">
+                                <i class="fa fa-map-marker text-orange-500 mt-1 mr-3"></i>
+                                <span>Calle 123 #45-67, Bogotá, Colombia</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-envelope text-orange-500 mr-3"></i>
+                                <span>bolivar@ejemplo.com</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-phone text-orange-500 mr-3"></i>
+                                <span>+57 123 456 7890</span>
+                            </li>
+                            <li class="flex items-center">
+                                <i class="fa fa-whatsapp text-orange-500 mr-3"></i>
+                                <span>+57 123 456 7890</span>
+                            </li>
+                        </ul>
+                        <div class="mt-6">
+                            <h4 class="font-semibold mb-3">Sígueme</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition">
+                                    <i class="fa fa-linkedin"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-blue-400 text-white flex items-center justify-center hover:bg-blue-500 transition">
+                                    <i class="fa fa-twitter"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition">
+                                    <i class="fa fa-instagram"></i>
+                                </a>
+                                <a href="#" class="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-900 transition">
+                                    <i class="fa fa-github"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Toggle sections
+        document.querySelectorAll('.section-toggle').forEach(button => {
+            button.addEventListener('click', () => {
+                const section = button.closest('.section');
+                section.classList.toggle('active');
+                
+                const icon = button.querySelector('.fa-chevron-down');
+                if (section.classList.contains('active')) {
+                    icon.classList.remove('fa-chevron-down');
+                    icon.classList.add('fa-chevron-up');
+                } else {
+                    icon.classList.remove('fa-chevron-up');
+                    icon.classList.add('fa-chevron-down');
+                }
+            });
+        });
+
+        // Portfolio filtering
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                document.querySelectorAll('.filter-btn').forEach(btn => {
+                    btn.classList.remove('bg-blue-600', 'text-white');
+                    btn.classList.add('bg-gray-200');
+                });
+                button.classList.remove('bg-gray-200');
+                button.classList.add('bg-blue-600', 'text-white');
+                
+                // Filter items
+                const filter = button.dataset.filter;
+                document.querySelectorAll('.portfolio-item').forEach(item => {
+                    if (filter === 'all' || item.dataset.category === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+
+        // Contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const message = document.getElementById('message').value;
+            
+            // Here you would normally send the data to a server
+            // For demo purposes, we'll just show an alert and open WhatsApp
+            alert(`Gracias ${name}, tu mensaje ha sido enviado. También puedes contactarme por WhatsApp.`);
+            
+            // Clear form
+            this.reset();
+            
+            // Optionally open WhatsApp
+            // window.open(`https://wa.me/571234567890?text=${encodeURIComponent(message)}`, '_blank');
+        });
+    </script>
+</body>
+</html>
