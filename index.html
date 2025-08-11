@@ -1,462 +1,1273 @@
-```jsx
-import React, { useState, useEffect } from "react";
-import { Sun, Shield, Droplet, Leaf, Zap, RefreshCw, Star, ShoppingCart, ChevronRight, Menu, X } from "lucide-react";
 
-const App = () => {
-  const [activeTab, setActiveTab] = useState('all');
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
+                        <!DOCTYPE html>
+                        <html lang="en">
+                        <head>
+                            <meta charset="UTF-8">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+              <style>
+                body {
+                  background-color: white; /* Ensure the iframe has a white background */
+                }
+    
+                
+              </style>
+                        </head>
+                        <body>
+                            <!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículum - Bolívar | Diseñador Gráfico</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        :root {
+            --rojo: #ff2e2e;
+            --amarillo: #ffd700;
+            --naranja: #ff6b35;
+            --verde: #39ff14;
+            --azul: #00ffff;
+            --rosa: #ff00ff;
+            --violeta: #8a2be2;
+            --gris-claro: #f5f5f5;
+            --gris-medio: #e0e0e0;
+            --gris-oscuro: #333;
+            --blanco: #ffffff;
+        }
 
-  useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-  const products = [
-    {
-      id: 1,
-      name: "SunShield Pro SPF 50",
-      price: 29.99,
-      category: "face",
-      rating: 4.8,
-      image: "https://placehold.co/300x300/FFD700/FFFFFF?text=SunShield+Pro",
-      features: ["SPF 50+", "Water Resistant", "Non-Greasy", "Vegan Formula"],
-      description: "Protección avanzada para el rostro con tecnología anti-envejecimiento. Ideal para uso diario."
-    },
-    {
-      id: 2,
-      name: "AquaProtect SPF 100",
-      price: 34.99,
-      category: "body",
-      rating: 4.9,
-      image: "https://placehold.co/300x300/00BFFF/FFFFFF?text=AquaProtect",
-      features: ["SPF 100", "80min Water Resistant", "Ultra Light", "Reef Safe"],
-      description: "Máxima protección para actividades acuáticas y exposición extrema al sol."
-    },
-    {
-      id: 3,
-      name: "EcoShield Natural SPF 30",
-      price: 24.99,
-      category: "natural",
-      rating: 4.7,
-      image: "https://placehold.co/300x300/228B22/FFFFFF?text=EcoShield",
-      features: ["Mineral Based", "Organic Ingredients", "Biodegradable", "No Chemical Filters"],
-      description: "Fórmula natural con óxido de zinc para una protección ecológica y segura."
-    },
-    {
-      id: 4,
-      name: "KidsShield SPF 45",
-      price: 22.99,
-      category: "kids",
-      rating: 4.6,
-      image: "https://placehold.co/300x300/FF69B4/FFFFFF?text=KidsShield",
-      features: ["SPF 45", "Hypoallergenic", "Tear-Free", "Easy Application"],
-      description: "Protección suave y segura para la piel sensible de los niños."
-    },
-    {
-      id: 5,
-      name: "SportShield SPF 50",
-      price: 27.99,
-      category: "sports",
-      rating: 4.5,
-      image: "https://placehold.co/300x300/FF4500/FFFFFF?text=SportShield",
-      features: ["SPF 50", "Sweat Resistant", "Fast Absorbing", "High Performance"],
-      description: "Diseñado para atletas y actividades al aire libre intensas."
-    },
-    {
-      id: 6,
-      name: "DailyShield SPF 30",
-      price: 19.99,
-      category: "daily",
-      rating: 4.4,
-      image: "https://placehold.co/300x300/87CEEB/FFFFFF?text=DailyShield",
-      features: ["SPF 30", "Lightweight", "Makeup Compatible", "Everyday Use"],
-      description: "Protección diaria ligera que se integra perfectamente en tu rutina."
-    }
-  ];
+        body {
+            background-color: var(--gris-claro);
+            color: var(--gris-oscuro);
+            line-height: 1.6;
+        }
 
-  const filteredProducts = activeTab === 'all' 
-    ? products 
-    : products.filter(product => product.category === activeTab);
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
 
-  const categories = [
-    { id: 'all', name: 'Todos', icon: Sun },
-    { id: 'face', name: 'Rostro', icon: Shield },
-    { id: 'body', name: 'Cuerpo', icon: Droplet },
-    { id: 'natural', name: 'Natural', icon: Leaf },
-    { id: 'kids', name: 'Niños', icon: Zap },
-    { id: 'sports', name: 'Deportes', icon: RefreshCw },
-    { id: 'daily', name: 'Diario', icon: Shield }
-  ];
+        section {
+            margin-bottom: 60px;
+            background-color: var(--blanco);
+            border-radius: 12px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
 
-  const testimonials = [
-    {
-      name: "María González",
-      role: "Dermatóloga",
-      content: "He recomendado SunShield a mis pacientes durante años. La calidad y protección que ofrece es excepcional.",
-      rating: 5
-    },
-    {
-      name: "Carlos Rodríguez",
-      role: "Atleta Profesional",
-      content: "Como triatleta, necesito protección confiable. AquaProtect me ha acompañado en todas mis competencias.",
-      rating: 5
-    },
-    {
-      name: "Ana Martínez",
-      role: "Madre de Familia",
-      content: "Finalmente encontré un protector solar seguro para mis hijos. KidsShield es su favorito y el mío también.",
-      rating: 5
-    }
-  ];
+        section:hover {
+            transform: translateY(-5px);
+        }
 
-  return (
-    <div className="min-h-screen bg-gradient-to-b from-amber-50 to-orange-50">
-      {/* Header */}
-      <header className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrollY > 50 ? 'bg-white shadow-lg' : 'bg-transparent'
-      }`}>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                <Sun className="w-6 h-6 text-white" />
-              </div>
-              <span className="text-2xl font-bold bg-gradient-to-r from-yellow-600 to-orange-600 bg-clip-text text-transparent">
-                SunShield
-              </span>
-            </div>
-            
-            <nav className="hidden md:flex space-x-8">
-              <a href="#home" className="text-gray-700 hover:text-orange-600 transition-colors">Inicio</a>
-              <a href="#products" className="text-gray-700 hover:text-orange-600 transition-colors">Productos</a>
-              <a href="#benefits" className="text-gray-700 hover:text-orange-600 transition-colors">Beneficios</a>
-              <a href="#testimonials" className="text-gray-700 hover:text-orange-600 transition-colors">Testimonios</a>
-            </nav>
+        .section-title {
+            background: linear-gradient(135deg, var(--azul), var(--rosa));
+            color: var(--blanco);
+            padding: 20px 30px;
+            font-size: 28px;
+            font-weight: 600;
+            margin: 0;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
 
-            <button 
-              className="md:hidden"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-            >
-              {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
+        .section-content {
+            padding: 30px;
+        }
 
-        {/* Mobile Menu */}
-        {isMenuOpen && (
-          <div className="md:hidden bg-white shadow-lg">
-            <div className="px-4 py-2 space-y-2">
-              <a href="#home" className="block py-2 text-gray-700 hover:text-orange-600">Inicio</a>
-              <a href="#products" className="block py-2 text-gray-700 hover:text-orange-600">Productos</a>
-              <a href="#benefits" className="block py-2 text-gray-700 hover:text-orange-600">Beneficios</a>
-              <a href="#testimonials" className="block py-2 text-gray-700 hover:text-orange-600">Testimonios</a>
-            </div>
-          </div>
-        )}
-      </header>
+        /* Home */
+        .home {
+            background: linear-gradient(135deg, #1a1a1a, #333);
+            color: var(--blanco);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
 
-      {/* Hero Section */}
-      <section id="home" className="pt-20 pb-16 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-8">
-              <div className="space-y-4">
-                <h1 className="text-4xl md:text-6xl font-bold text-gray-900 leading-tight">
-                  Protección Solar
-                  <span className="block bg-gradient-to-r from-yellow-500 to-orange-600 bg-clip-text text-transparent">
-                    Inteligente
-                  </span>
-                </h1>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  Descubre nuestra línea premium de protectores solares que combinan 
-                  protección avanzada con ingredientes naturales para cuidar tu piel 
-                  mientras disfrutas del sol.
+        .home::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.pexels.com/photos/29570237/pexels-photo-29570237.jpeg?auto=compress&cs=tinysrgb&w=1600') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        .home-content {
+            position: relative;
+            z-index: 2;
+            padding: 100px 20px;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid var(--azul);
+            object-fit: cover;
+            margin: 0 auto 20px;
+            box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+        }
+
+        .name {
+            font-size: 42px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .title {
+            font-size: 24px;
+            color: var(--amarillo);
+            margin-bottom: 20px;
+        }
+
+        .description {
+            font-size: 18px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            line-height: 1.8;
+        }
+
+        .btn-download {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--verde), var(--azul));
+            color: var(--blanco);
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+        }
+
+        .btn-download:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.6);
+        }
+
+        /* About */
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .personal-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .info-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-item i {
+            width: 30px;
+            color: var(--azul);
+            font-size: 18px;
+        }
+
+        .info-label {
+            font-weight: 600;
+            min-width: 120px;
+            color: var(--gris-oscuro);
+        }
+
+        .info-value {
+            color: var(--gris-oscuro);
+        }
+
+        .professional-summary {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .summary-text {
+            text-align: justify;
+            line-height: 1.8;
+            font-size: 16px;
+        }
+
+        /* Skills */
+        .skills-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .skills-column {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .skill-name {
+            font-weight: 600;
+            color: var(--gris-oscuro);
+        }
+
+        .skill-level {
+            color: var(--naranja);
+            font-size: 14px;
+        }
+
+        .progress-bar {
+            height: 10px;
+            background-color: var(--gris-medio);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            border-radius: 5px;
+        }
+
+        .progress-photoshop { background: linear-gradient(90deg, var(--rojo), var(--rosa)); width: 95%; }
+        .progress-illustrator { background: linear-gradient(90deg, var(--amarillo), var(--naranja)); width: 98%; }
+        .progress-indesign { background: linear-gradient(90deg, var(--verde), var(--azul)); width: 90%; }
+        .progress-premiere { background: linear-gradient(90deg, var(--violeta), var(--rosa)); width: 85%; }
+        .progress-after { background: linear-gradient(90deg, var(--azul), var(--verde)); width: 88%; }
+        .progress-html { background: linear-gradient(90deg, var(--rojo), var(--amarillo)); width: 80%; }
+        .progress-css { background: linear-gradient(90deg, var(--naranja), var(--verde)); width: 82%; }
+        .progress-js { background: linear-gradient(90deg, var(--azul), var(--rosa)); width: 75%; }
+
+        .language-item {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            padding: 10px;
+            background-color: var(--gris-claro);
+            border-radius: 8px;
+        }
+
+        .language-name {
+            font-weight: 600;
+        }
+
+        .language-level {
+            color: var(--naranja);
+            font-weight: 500;
+        }
+
+        /* Experience */
+        .experience-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--gris-medio);
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+        }
+
+        .job-title {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--gris-oscuro);
+            margin-bottom: 5px;
+        }
+
+        .company {
+            font-size: 18px;
+            color: var(--azul);
+            margin-bottom: 8px;
+        }
+
+        .date {
+            font-size: 14px;
+            color: var(--gris-oscuro);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .responsibilities {
+            list-style: none;
+        }
+
+        .responsibilities li {
+            margin-bottom: 8px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .responsibilities li::before {
+            content: "▹";
+            color: var(--verde);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Education */
+        .education-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px dashed var(--gris-medio);
+        }
+
+        .education-item:last-child {
+            border-bottom: none;
+        }
+
+        .degree {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--gris-oscuro);
+            margin-bottom: 5px;
+        }
+
+        .institution {
+            font-size: 18px;
+            color: var(--rosa);
+            margin-bottom: 8px;
+        }
+
+        .education-date {
+            font-size: 14px;
+            color: var(--gris-oscuro);
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+
+        .education-description {
+            line-height: 1.6;
+        }
+
+        /* Portfolio */
+        .portfolio-filters {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            background-color: var(--gris-medio);
+            color: var(--gris-oscuro);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .filter-btn:hover, .filter-btn.active {
+            background: linear-gradient(135deg, var(--azul), var(--rosa));
+            color: var(--blanco);
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        .portfolio-item {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .portfolio-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .portfolio-info {
+            padding: 20px;
+            background-color: var(--blanco);
+        }
+
+        .portfolio-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--gris-oscuro);
+        }
+
+        .portfolio-category {
+            font-size: 14px;
+            color: var(--naranja);
+            font-weight: 500;
+        }
+
+        /* Blog */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .blog-post {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .blog-post:hover {
+            transform: translateY(-5px);
+        }
+
+        .blog-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .blog-content {
+            padding: 20px;
+        }
+
+        .blog-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: var(--gris-oscuro);
+        }
+
+        .blog-meta {
+            font-size: 14px;
+            color: var(--gris-oscuro);
+            margin-bottom: 15px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .blog-excerpt {
+            line-height: 1.6;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+
+        .read-more {
+            color: var(--azul);
+            text-decoration: none;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            transition: color 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--rosa);
+        }
+
+        .read-more i {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .read-more:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Testimonials */
+        .testimonials-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-item {
+            padding: 30px;
+            border-radius: 12px;
+            background-color: var(--gris-claro);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .testimonial-item::before {
+            content: """;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-size: 80px;
+            color: var(--azul);
+            opacity: 0.2;
+            font-family: Georgia, serif;
+        }
+
+        .testimonial-text {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            font-style: italic;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+        }
+
+        .author-img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-weight: 600;
+            color: var(--gris-oscuro);
+        }
+
+        .author-position {
+            font-size: 14px;
+            color: var(--naranja);
+        }
+
+        /* Contact */
+        .contact-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .contact-info {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .contact-info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .contact-info-item i {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--azul), var(--rosa));
+            color: var(--blanco);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+
+        .contact-info-text {
+            flex: 1;
+        }
+
+        .contact-info-label {
+            font-weight: 600;
+            color: var(--gris-oscuro);
+            margin-bottom: 5px;
+        }
+
+        .contact-info-value {
+            color: var(--gris-oscuro);
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-link {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--gris-medio);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--blanco);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-link.linkedin { background-color: var(--azul); }
+        .social-link.twitter { background-color: var(--rosa); }
+        .social-link.instagram { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
+        .social-link.github { background-color: var(--gris-oscuro); }
+
+        .contact-form {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--gris-oscuro);
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--gris-medio);
+            border-radius: 8px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--azul);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background: linear-gradient(135deg, var(--verde), var(--azul));
+            color: var(--blanco);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 255, 255, 0.4);
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 255, 255, 0.6);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 24px;
+            }
+
+            .home-content {
+                padding: 60px 20px;
+            }
+
+            .name {
+                font-size: 32px;
+            }
+
+            .title {
+                font-size: 20px;
+            }
+
+            .description {
+                font-size: 16px;
+            }
+
+            .btn-download {
+                padding: 12px 25px;
+                font-size: 16px;
+            }
+
+            .portfolio-grid, .blog-grid, .testimonials-container {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 15px;
+            }
+
+            section {
+                margin-bottom: 40px;
+            }
+
+            .section-content {
+                padding: 20px;
+            }
+
+            .portfolio-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .filter-btn {
+                width: 100%;
+                max-width: 200px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Home / Portada -->
+        <section class="home">
+            <div class="home-content">
+                <img src="https://images.pexels.com/photos/17235131/pexels-photo-17235131.jpeg?auto=compress&cs=tinysrgb&fit=crop&fp-y=0.30000001192092896&h=125&w=1250" alt="Bolívar" class="profile-img">
+                <h1 class="name">Bolívar</h1>
+                <h2 class="title">Diseñador Gráfico</h2>
+                <p class="description">
+                    Soy Bolívar, diseñador gráfico con 10 años de experiencia. Domino todas las aplicaciones de Adobe Creative Suite (Photoshop, Illustrator, InDesign, Premiere Pro y After Effects). Estoy graduado en áreas relacionadas con tecnología y desarrollo, combinando creatividad con soluciones tecnológicas. Tengo 28 años y pasión por innovar en el diseño.
                 </p>
-              </div>
-              
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="bg-gradient-to-r from-yellow-500 to-orange-600 text-white px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 flex items-center justify-center space-x-2">
-                  <span>Comprar Ahora</span>
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-                <button className="border-2 border-orange-500 text-orange-600 px-8 py-4 rounded-full font-semibold hover:bg-orange-50 transition-colors">
-                  Ver Productos
-                </button>
-              </div>
-
-              <div className="grid grid-cols-3 gap-6 pt-8">
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-600">SPF 100</div>
-                  <div className="text-sm text-gray-600">Máxima Protección</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-600">100%</div>
-                  <div className="text-sm text-gray-600">Reef Safe</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-2xl font-bold text-orange-600">80min</div>
-                  <div className="text-sm text-gray-600">Resistente al Agua</div>
-                </div>
-              </div>
+                <a href="#" class="btn-download">
+                    <i class="fa fa-download"></i> Descargar CV
+                </a>
             </div>
+        </section>
 
-            <div className="relative">
-              <div className="relative z-10">
-                <img 
-                  src="https://placehold.co/500x600/FFD700/FFFFFF?text=SunShield+Premium" 
-                  alt="SunShield Premium Product" 
-                  className="rounded-2xl shadow-2xl w-full"
-                />
-              </div>
-              <div className="absolute -top-4 -right-4 w-full h-full bg-gradient-to-r from-yellow-400 to-orange-500 rounded-2xl opacity-20"></div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Benefits Section */}
-      <section id="benefits" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Por qué Elegir <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-orange-600">SunShield</span>
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Nuestra tecnología patentada ofrece una protección superior mientras cuida tu piel
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-orange-50 to-yellow-50 hover:shadow-xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Shield className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Protección Avanzada</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Fórmulas con SPF de alta gama que bloquean efectivamente los rayos UVA y UVB, 
-                previniendo el envejecimiento prematuro y daños en la piel.
-              </p>
-            </div>
-
-            <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-50 hover:shadow-xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Leaf className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Fórmulas Naturales</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Ingredientes orgánicos y minerales que respetan tu piel y el medio ambiente, 
-                libres de químicos dañinos y amigables con los arrecifes.
-              </p>
-            </div>
-
-            <div className="text-center p-8 rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 hover:shadow-xl transition-all duration-300">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-400 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-6">
-                <Droplet className="w-8 h-8 text-white" />
-              </div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Hidratación Profunda</h3>
-              <p className="text-gray-600 leading-relaxed">
-                Nuestras fórmulas no solo protegen, sino que también hidratan profundamente, 
-                manteniendo tu piel suave y saludable durante todo el día.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Products Section */}
-      <section id="products" className="py-16 bg-gradient-to-b from-amber-50 to-orange-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Nuestra <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-orange-600">Colección</span>
-            </h2>
-            <p className="text-xl text-gray-600">
-              Encuentra el protector solar perfecto para cada necesidad
-            </p>
-          </div>
-
-          {/* Category Tabs */}
-          <div className="flex flex-wrap justify-center gap-2 mb-12">
-            {categories.map((category) => (
-              <button
-                key={category.id}
-                onClick={() => setActiveTab(category.id)}
-                className={`flex items-center space-x-2 px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                  activeTab === category.id
-                    ? 'bg-gradient-to-r from-yellow-500 to-orange-600 text-white shadow-lg'
-                    : 'bg-white text-gray-700 hover:bg-orange-50'
-                }`}
-              >
-                <category.icon className="w-5 h-5" />
-                <span>{category.name}</span>
-              </button>
-            ))}
-          </div>
-
-          {/* Products Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProducts.map((product) => (
-              <div key={product.id} className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden group">
-                <div className="relative overflow-hidden">
-                  <img 
-                    src={product.image} 
-                    alt={product.name}
-                    className="w-full h-64 object-cover group-hover:scale-105 transition-transform duration-300"
-                  />
-                  <div className="absolute top-4 right-4 bg-white px-3 py-1 rounded-full text-sm font-semibold text-orange-600">
-                    SPF {product.features[0].split(' ')[1]}
-                  </div>
-                </div>
-                
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-xl font-bold text-gray-900">{product.name}</h3>
-                    <div className="flex items-center space-x-1">
-                      <Star className="w-5 h-5 text-yellow-400 fill-current" />
-                      <span className="font-semibold text-gray-700">{product.rating}</span>
+        <!-- About / Sobre mí -->
+        <section>
+            <h2 class="section-title">Sobre Mí</h2>
+            <div class="section-content">
+                <div class="about-content">
+                    <div class="personal-info">
+                        <h3>Información Personal</h3>
+                        <div class="info-item">
+                            <i class="fa fa-calendar"></i>
+                            <span class="info-label">Fecha de nacimiento:</span>
+                            <span class="info-value">15 de Marzo de 1996</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa fa-map-marker"></i>
+                            <span class="info-label">Ubicación:</span>
+                            <span class="info-value">Ciudad de México, México</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa fa-envelope"></i>
+                            <span class="info-label">Email:</span>
+                            <span class="info-value">bolivar.design@example.com</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fa fa-phone"></i>
+                            <span class="info-label">Teléfono:</span>
+                            <span class="info-value">+52 55 1234 5678</span>
+                        </div>
                     </div>
-                  </div>
-                  
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">{product.description}</p>
-                  
-                  <div className="flex flex-wrap gap-1 mb-4">
-                    {product.features.slice(0, 3).map((feature, index) => (
-                      <span key={index} className="bg-orange-100 text-orange-800 px-2 py-1 rounded-full text-xs font-medium">
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
-                  
-                  <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-orange-600">${product.price}</span>
-                    <button className="bg-gradient-to-r from-yellow-500 to-orange-600 text-white px-6 py-2 rounded-full font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 flex items-center space-x-2">
-                      <ShoppingCart className="w-4 h-4" />
-                      <span>Comprar</span>
-                    </button>
-                  </div>
+                    <div class="professional-summary">
+                        <h3>Resumen Profesional</h3>
+                        <p class="summary-text">
+                            Diseñador gráfico altamente creativo con más de una década de experiencia en la creación de identidades visuales impactantes, campañas publicitarias efectivas y soluciones de diseño innovadoras. Mi formación técnica me permite combinar habilidades artísticas con conocimientos tecnológicos para desarrollar proyectos que no solo son visualmente atractivos, sino también funcionales y estratégicos.
+                        </p>
+                        <br>
+                        <p class="summary-text">
+                            Especializado en branding, diseño editorial, motion graphics y diseño web, he trabajado con clientes de diversos sectores, desde startups emergentes hasta corporaciones multinacionales. Mi enfoque se centra en entender profundamente las necesidades del cliente y su audiencia para crear soluciones de diseño que comunican eficazmente y generan resultados tangibles.
+                        </p>
+                        <br>
+                        <p class="summary-text">
+                            Apasionado por la innovación y las nuevas tecnologías, continuamente actualizo mis habilidades para mantenerme a la vanguardia de las tendencias del diseño y la comunicación visual. Mi objetivo es crear experiencias visuales memorables que conecten con las emociones y motivaciones de las personas.
+                        </p>
+                    </div>
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Section */}
-      <section id="testimonials" className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-              Lo que Dicen <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-orange-600">Nuestros Clientes</span>
-            </h2>
-            <p className="text-xl text-gray-600">
-              Confianza construida sobre resultados reales
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {testimonials.map((testimonial, index) => (
-              <div key={index} className="bg-gradient-to-br from-amber-50 to-orange-50 p-8 rounded-2xl relative">
-                <div className="absolute top-6 right-6 text-yellow-400">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className={`w-5 h-5 ${i < testimonial.rating ? 'fill-current' : 'stroke-current'}`} />
-                  ))}
-                </div>
-                
-                <blockquote className="text-gray-700 italic mb-6 leading-relaxed">
-                  "{testimonial.content}"
-                </blockquote>
-                
-                <div className="flex items-center">
-                  <div className="w-12 h-12 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-white font-bold">
-                    {testimonial.name.charAt(0)}
-                  </div>
-                  <div className="ml-4">
-                    <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                    <div className="text-sm text-gray-600">{testimonial.role}</div>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-16 bg-gradient-to-r from-yellow-500 to-orange-600">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
-            ¡Protege tu Piel Hoy!
-          </h2>
-          <p className="text-xl text-yellow-100 mb-8 max-w-3xl mx-auto">
-            Únete a miles de personas que confían en SunShield para protegerse del sol 
-            mientras cuidan su piel y el medio ambiente.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button className="bg-white text-orange-600 px-8 py-4 rounded-full font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
-              Comprar Ahora
-            </button>
-            <button className="border-2 border-white text-white px-8 py-4 rounded-full font-semibold hover:bg-white hover:text-orange-600 transition-colors">
-              Ver Todos los Productos
-            </button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div className="col-span-2">
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-8 h-8 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full flex items-center justify-center">
-                  <Sun className="w-5 h-5 text-white" />
-                </div>
-                <span className="text-xl font-bold">SunShield</span>
-              </div>
-              <p className="text-gray-400 mb-6 leading-relaxed">
-                Líder en protección solar premium con fórmulas innovadoras que combinan 
-                eficacia, seguridad y sostenibilidad para cuidar tu piel y el planeta.
-              </p>
-              <div className="flex space-x-4">
-                {['facebook', 'instagram', 'twitter', 'youtube'].map((social) => (
-                  <a key={social} href="#" className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-orange-500 transition-colors">
-                    <span className="sr-only">{social}</span>
-                  </a>
-                ))}
-              </div>
             </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Productos</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Protectores Faciales</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Protectores Corporales</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Para Niños</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Deportes y Actividades</a></li>
-              </ul>
+        </section>
+
+        <!-- Skills / Habilidades -->
+        <section>
+            <h2 class="section-title">Habilidades</h2>
+            <div class="section-content">
+                <div class="skills-container">
+                    <div class="skills-column">
+                        <h3>Habilidades Técnicas</h3>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Adobe Photoshop</span>
+                                <span class="skill-level">95%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress progress-photoshop"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Adobe Illustrator</span>
+                                <span class="skill-level">98%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress progress-illustrator"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Adobe InDesign</span>
+                                <span class="skill-level">90%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress progress-indesign"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Adobe Premiere Pro</span>
+                                <span class="skill-level">85%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress progress-premiere"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">Adobe After Effects</span>
+                                <span class="skill-level">88%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress progress-after"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">HTML & CSS</span>
+                                <span class="skill-level">80%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress progress-html"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item">
+                            <div class="skill-header">
+                                <span class="skill-name">JavaScript</span>
+                                <span class="skill-level">75%</span>
+                            </div>
+                            <div class="progress-bar">
+                                <div class="progress progress-js"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="skills-column">
+                        <h3>Idiomas</h3>
+                        <div class="language-item">
+                            <span class="language-name">Español</span>
+                            <span class="language-level">Nativo</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">Inglés</span>
+                            <span class="language-level">Avanzado</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">Francés</span>
+                            <span class="language-level">Intermedio</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">Portugués</span>
+                            <span class="language-level">Básico</span>
+                        </div>
+                        <h3>Competencias</h3>
+                        <div class="language-item">
+                            <span class="language-name">Diseño de Identidad</span>
+                            <span class="language-level">Experto</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">Motion Graphics</span>
+                            <span class="language-level">Avanzado</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">Diseño Web</span>
+                            <span class="language-level">Intermedio</span>
+                        </div>
+                        <div class="language-item">
+                            <span class="language-name">Gestión de Proyectos</span>
+                            <span class="language-level">Avanzado</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            
-            <div>
-              <h3 className="font-semibold mb-4">Soporte</h3>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Preguntas Frecuentes</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Guía de Tallas</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Política de Devoluciones</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Contacto</a></li>
-              </ul>
+        </section>
+
+        <!-- Experience / Experiencia Laboral -->
+        <section>
+            <h2 class="section-title">Experiencia Laboral</h2>
+            <div class="section-content">
+                <div class="experience-item">
+                    <h3 class="job-title">Diseñador Gráfico Principal</h3>
+                    <div class="company">Creative Studio Agency</div>
+                    <div class="date">Enero 2020 - Presente</div>
+                    <ul class="responsibilities">
+                        <li>Lideré el equipo de diseño en la creación de identidades visuales para más de 50 clientes, mejorando la coherencia de marca en un 40%.</li>
+                        <li>Desarrollé campañas publicitarias multicanal que aumentaron la visibilidad de marca en un 65% según métricas de engagement.</li>
+                        <li>Implementé un sistema de gestión de activos digitales que redujo el tiempo de producción en un 30%.</li>
+                        <li>Supervisé la creación de contenidos animados para redes sociales, logrando un crecimiento del 200% en interacciones.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3 class="job-title">Diseñador Gráfico Senior</h3>
+                    <div class="company">Innovative Design Solutions</div>
+                    <div class="date">Marzo 2017 - Diciembre 2019</div>
+                    <ul class="responsibilities">
+                        <li>Diseñé y produje materiales de marketing para productos tecnológicos, contribuyendo al lanzamiento exitoso de 15 nuevos productos.</li>
+                        <li>Colaboré con el equipo de desarrollo web para crear interfaces de usuario intuitivas y visualmente atractivas.</li>
+                        <li>Desarrollé guías de estilo de marca que fueron adoptadas por 8 departamentos diferentes de la empresa.</li>
+                        <li>Capacité a 25 empleados en herramientas de diseño y mejores prácticas de comunicación visual.</li>
+                    </ul>
+                </div>
+                <div class="experience-item">
+                    <h3 class="job-title">Diseñador Gráfico</h3>
+                    <div class="company">Visual Impact Studio</div>
+                    <div class="date">Junio 2014 - Febrero 2017</div>
+                    <ul class="responsibilities">
+                        <li>Creé diseños editoriales para revistas y publicaciones corporativas con tirajes superiores a 50,000 copias.</li>
+                        <li>Desarrollé animaciones para presentaciones corporativas que fueron utilizadas en eventos internacionales.</li>
+                        <li>Optimicé flujos de trabajo de producción gráfica, reduciendo errores de impresión en un 25%.</li>
+                        <li>Colaboré con equipos de marketing en la creación de campañas que generaron un ROI del 180%.</li>
+                    </ul>
+                </div>
             </div>
-          </div>
-          
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 SunShield. Todos los derechos reservados.</p>
-          </div>
-        </div>
-      </footer>
+        </section>
+
+        <!-- Education / Educación -->
+        <section>
+            <h2 class="section-title">Educación</h2>
+            <div class="section-content">
+                <div class="education-item">
+                    <h3 class="degree">Maestría en Diseño Digital y Tecnologías Emergentes</h3>
+                    <div class="institution">Universidad Tecnológica de Diseño</div>
+                    <div class="education-date">2012 - 2014</div>
+                    <p class="education-description">
+                        Programa enfocado en la integración de diseño gráfico con tecnologías digitales avanzadas. Estudios especializados en diseño interactivo, realidad aumentada, y experiencias inmersivas. Proyecto final: "Interfaz de usuario adaptativa basada en inteligencia artificial para personas con discapacidades visuales".
+                    </p>
+                </div>
+                <div class="education-item">
+                    <h3 class="degree">Licenciatura en Diseño Gráfico</h3>
+                    <div class="institution">Escuela de Artes Visuales y Comunicación</div>
+                    <div class="education-date">2008 - 2012</div>
+                    <p class="education-description">
+                        Formación integral en principios del diseño, teoría del color, tipografía, diseño editorial, identidad corporativa y comunicación visual. Enfoque en la combinación de habilidades artísticas con conocimientos tecnológicos. Tesis: "La evolución del diseño de marca en la era digital".
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio / Portafolio -->
+        <section>
+            <h2 class="section-title">Portafolio</h2>
+            <div class="section-content">
+                <div class="portfolio-filters">
+                    <button class="filter-btn active">Todos</button>
+                    <button class="filter-btn">Diseño de Marca</button>
+                    <button class="filter-btn">Motion Graphics</button>
+                    <button class="filter-btn">Editorial</button>
+                    <button class="filter-btn">Digital</button>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item">
+                        <img src="https://images.pexels.com/photos/6823762/pexels-photo-6823762.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Proyecto 1" class="portfolio-img">
+                        <div class="portfolio-info">
+                            <h3 class="portfolio-title">Rebranding Corporativo</h3>
+                            <p class="portfolio-category">Diseño de Marca</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://images.pexels.com/photos/7158666/pexels-photo-7158666.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Proyecto 2" class="portfolio-img">
+                        <div class="portfolio-info">
+                            <h3 class="portfolio-title">Animación Publicitaria</h3>
+                            <p class="portfolio-category">Motion Graphics</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://images.pexels.com/photos/7179696/pexels-photo-7179696.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Proyecto 3" class="portfolio-img">
+                        <div class="portfolio-info">
+                            <h3 class="portfolio-title">Revista Corporativa</h3>
+                            <p class="portfolio-category">Editorial</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://images.pexels.com/photos/1103970/notebook-office-desk-work-1103970.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Proyecto 4" class="portfolio-img">
+                        <div class="portfolio-info">
+                            <h3 class="portfolio-title">Diseño Web Interactivo</h3>
+                            <p class="portfolio-category">Digital</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://images.pexels.com/photos/3183150/pexels-photo-3183150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Proyecto 5" class="portfolio-img">
+                        <div class="portfolio-info">
+                            <h3 class="portfolio-title">Packaging Innovador</h3>
+                            <p class="portfolio-category">Diseño de Marca</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item">
+                        <img src="https://images.pexels.com/photos/7179701/pexels-photo-7179701.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Proyecto 6" class="portfolio-img">
+                        <div class="portfolio-info">
+                            <h3 class="portfolio-title">Video Corporativo</h3>
+                            <p class="portfolio-category">Motion Graphics</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog -->
+        <section>
+            <h2 class="section-title">Blog</h2>
+            <div class="section-content">
+                <div class="blog-grid">
+                    <div class="blog-post">
+                        <img src="https://images.pexels.com/photos/7180650/pexels-photo-7180650.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Artículo 1" class="blog-img">
+                        <div class="blog-content">
+                            <h3 class="blog-title">El Futuro del Diseño: Integración de IA y Creatividad</h3>
+                            <div class="blog-meta">
+                                <span><i class="fa fa-calendar"></i> 15 de Junio, 2023</span>
+                                <span><i class="fa fa-user"></i> Bolívar</span>
+                            </div>
+                            <p class="blog-excerpt">
+                                Exploramos cómo la inteligencia artificial está transformando el proceso creativo en el diseño gráfico, no como reemplazo de los diseñadores, sino como una poderosa herramienta que amplifica nuestra creatividad y eficiencia.
+                            </p>
+                            <a href="#" class="read-more">Leer más <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="blog-post">
+                        <img src="https://images.pexels.com/photos/7180652/pexels-photo-7180652.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Artículo 2" class="blog-img">
+                        <div class="blog-content">
+                            <h3 class="blog-title">Tendencias de Color 2023: Psicología y Aplicación</h3>
+                            <div class="blog-meta">
+                                <span><i class="fa fa-calendar"></i> 3 de Mayo, 2023</span>
+                                <span><i class="fa fa-user"></i> Bolívar</span>
+                            </div>
+                            <p class="blog-excerpt">
+                                Análisis detallado de las paletas de color dominantes en el diseño contemporáneo, su impacto psicológico en los consumidores y cómo aplicarlas estratégicamente en diferentes tipos de proyectos.
+                            </p>
+                            <a href="#" class="read-more">Leer más <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="blog-post">
+                        <img src="https://images.pexels.com/photos/7180655/pexels-photo-7180655.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Artículo 3" class="blog-img">
+                        <div class="blog-content">
+                            <h3 class="blog-title">Motion Design: Más Allá de la Animación</h3>
+                            <div class="blog-meta">
+                                <span><i class="fa fa-calendar"></i> 21 de Abril, 2023</span>
+                                <span><i class="fa fa-user"></i> Bolívar</span>
+                            </div>
+                            <p class="blog-excerpt">
+                                Cómo el motion design ha evolucionado de ser simplemente animación a convertirse en una disciplina estratégica de comunicación que guía la experiencia del usuario y mejora la retención de información.
+                            </p>
+                            <a href="#" class="read-more">Leer más <i class="fa fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Testimonials / Testimonios -->
+        <section>
+            <h2 class="section-title">Testimonios</h2>
+            <div class="section-content">
+                <div class="testimonials-container">
+                    <div class="testimonial-item">
+                        <p class="testimonial-text">
+                            "Bolívar transformó completamente nuestra identidad de marca. Su enfoque estratégico y atención al detalle superaron nuestras expectativas. No solo creó un diseño impactante, sino que desarrolló un sistema de marca coherente que ha mejorado significativamente nuestra presencia en todos los canales."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cliente 1" class="author-img">
+                            <div class="author-info">
+                                <div class="author-name">María González</div>
+                                <div class="author-position">Directora de Marketing, TechInnovate</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <p class="testimonial-text">
+                            "Trabajar con Bolívar fue una experiencia excepcional. Su capacidad para entender nuestras necesidades empresariales y traducirlas en soluciones de diseño efectivas es impresionante. Sus animaciones para nuestra campaña de lanzamiento generaron un 300% más de engagement que nuestras campañas anteriores."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://images.pexels.com/photos/839011/pexels-photo-839011.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Cliente 2" class="author-img">
+                            <div class="author-info">
+                                <div class="author-name">Carlos Ramírez</div>
+                                <div class="author-position">CEO, Digital Solutions</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="testimonial-item">
+                        <p class="testimonial-text">
+                            "Como colega, admiro profundamente el enfoque de Bolívar hacia el diseño. Combina una estética impecable con una sólida comprensión de los principios de usabilidad y experiencia de usuario. Sus soluciones no solo son hermosas, sino que también resuelven problemas reales de manera efectiva."
+                        </p>
+                        <div class="testimonial-author">
+                            <img src="https://images.pexels.com/photos/2725323/pexels-photo-2725323.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Colega" class="author-img">
+                            <div class="author-info">
+                                <div class="author-name">Ana Martínez</div>
+                                <div class="author-position">Diseñadora UX, CreativeLab</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact / Contacto -->
+        <section>
+            <h2 class="section-title">Contacto</h2>
+            <div class="section-content">
+                <div class="contact-container">
+                    <div class="contact-info">
+                        <h3>Información de Contacto</h3>
+                        <div class="contact-info-item">
+                            <i class="fa fa-map-marker"></i>
+                            <div class="contact-info-text">
+                                <div class="contact-info-label">Dirección</div>
+                                <div class="contact-info-value">Av. Reforma 123, Col. Centro, Ciudad de México, C.P. 06000</div>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fa fa-envelope"></i>
+                            <div class="contact-info-text">
+                                <div class="contact-info-label">Email</div>
+                                <div class="contact-info-value">bolivar.design@example.com</div>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fa fa-phone"></i>
+                            <div class="contact-info-text">
+                                <div class="contact-info-label">Teléfono</div>
+                                <div class="contact-info-value">+52 55 1234 5678</div>
+                            </div>
+                        </div>
+                        <div class="contact-info-item">
+                            <i class="fa fa-globe"></i>
+                            <div class="contact-info-text">
+                                <div class="contact-info-label">Sitio Web</div>
+                                <div class="contact-info-value">www.bolivardesign.com</div>
+                            </div>
+                        </div>
+                        <h3>Redes Sociales</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link linkedin"><i class="fa fa-linkedin"></i></a>
+                            <a href="#" class="social-link twitter"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="social-link instagram"><i class="fa fa-instagram"></i></a>
+                            <a href="#" class="social-link github"><i class="fa fa-github"></i></a>
+                        </div>
+                    </div>
+                    <div class="contact-form">
+                        <h3>Envíame un Mensaje</h3>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Nombre</label>
+                                <input type="text" id="name" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email</label>
+                                <input type="email" id="email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject" class="form-label">Asunto</label>
+                                <input type="text" id="subject" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message" class="form-label">Mensaje</label>
+                                <textarea id="message" class="form-control" required></textarea>
+                            </div>
+                            <button type="submit" class="btn-submit">Enviar Mensaje</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
     </div>
-  );
-};
 
-export default App;
-```
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Gracias por tu mensaje, Bolívar se pondrá en contacto contigo lo antes posible.');
+            this.reset();
+        });
+
+        // Portfolio filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        
+        filterButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                this.classList.add('active');
+                
+                // In a real implementation, this would filter the portfolio items
+                // For this static version, we'll just show the click effect
+            });
+        });
+
+        // Add animation on scroll
+        const sections = document.querySelectorAll('section');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        sections.forEach(section => {
+            section.style.opacity = 0;
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
+
+
+    
+              <script>
+                              
+              </script>
+                        </body>
+                        </html>
+                    
