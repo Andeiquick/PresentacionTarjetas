@@ -1,568 +1,639 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Hoja de Vida - Bolívar Andrade</title>
-  <link
-    rel="stylesheet"
-    href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
-  />
-  <style>
-    /* Variables de colores */
-    :root {
-      --azul: #007bff;
-      --naranja: #ff6600;
-      --verde: #28a745;
-      --rojo: #dc3545;
-      --gris-claro: #f7f8fa;
-      --blanco: #fff;
-      --negro: #222;
-      --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      --transition: 0.3s ease;
-    }
-
-    /* Reset y base */
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: var(--font-family);
-      background-color: var(--gris-claro);
-      color: var(--negro);
-      line-height: 1.5;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    main {
-      max-width: 900px;
-      margin: 1rem auto 2rem;
-      background: var(--blanco);
-      border-radius: 6px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      padding: 1rem 2rem 2rem;
-    }
-
-    h1, h2, h3, h4 {
-      color: var(--negro);
-      margin-top: 0;
-      font-weight: 600;
-    }
-
-    h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.2rem;
-    }
-
-    h2 {
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
-      border-bottom: 3px solid var(--naranja);
-      padding-bottom: 0.25rem;
-    }
-
-    h3 {
-      font-size: 1.2rem;
-      margin-bottom: 0.2rem;
-    }
-
-    p {
-      margin: 0.3rem 0 1rem;
-    }
-
-    /* Contenedor botones secciones */
-    #menu {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 0.7rem;
-      margin-bottom: 1rem;
-    }
-    #menu button {
-      background: var(--azul);
-      border: none;
-      color: white;
-      font-weight: 600;
-      padding: 0.6rem 1.1rem;
-      border-radius: 4px;
-      cursor: pointer;
-      font-size: 1rem;
-      transition: background-color var(--transition);
-      flex: 1 1 120px;
-      max-width: 140px;
-    }
-    #menu button:hover,
-    #menu button.active {
-      background: var(--naranja);
-    }
-
-    /* Secciones */
-    section {
-      display: none;
-      padding: 1rem 0 0;
-    }
-    section.active {
-      display: block;
-      animation: fadeIn 0.4s ease forwards;
-    }
-
-    @keyframes fadeIn {
-      from {opacity: 0; transform: translateY(10px);}
-      to {opacity: 1; transform: translateY(0);}
-    }
-
-    /* Home / Portada */
-    #home .avatar {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 4px solid var(--azul);
-      margin: 1rem auto;
-      display: block;
-      box-shadow: 0 4px 8px rgba(0,123,255,0.3);
-    }
-
-    #home .name {
-      text-align: center;
-      margin-top: 0.3rem;
-    }
-    #home .profession {
-      text-align: center;
-      font-weight: 500;
-      color: var(--azul);
-      margin-bottom: 1rem;
-    }
-    #home .description {
-      text-align: center;
-      max-width: 550px;
-      margin: 0 auto 1.5rem;
-      font-size: 1.1rem;
-      color: #444;
-      line-height: 1.4;
-    }
-    #home .btn-cv {
-      display: block;
-      margin: 0 auto;
-      background: var(--naranja);
-      border: none;
-      padding: 0.75rem 2rem;
-      font-weight: 700;
-      color: white;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      text-decoration: none;
-      transition: background-color var(--transition);
-      box-shadow: 0 3px 7px rgba(255,102,0,0.5);
-      width: max-content;
-    }
-    #home .btn-cv:hover {
-      background: #e65500;
-    }
-
-    /* About / Sobre mí */
-    #about .personal-info {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem 2rem;
-      margin-bottom: 1rem;
-    }
-    #about .personal-info > div {
-      flex: 1 1 200px;
-      background: var(--gris-claro);
-      padding: 1rem;
-      border-radius: 6px;
-    }
-    #about .personal-info strong {
-      display: block;
-      margin-bottom: 0.25rem;
-      color: var(--azul);
-    }
-    #about .summary {
-      font-size: 1rem;
-      color: #333;
-      margin-top: 0.5rem;
-    }
-
-    /* Skills */
-    #skills .skill {
-      margin-bottom: 1rem;
-    }
-    #skills .skill-name {
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-      display: flex;
-      justify-content: space-between;
-      color: var(--negro);
-    }
-    #skills .progress-bar {
-      background: var(--gris-claro);
-      border-radius: 20px;
-      overflow: hidden;
-      height: 14px;
-      box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
-    }
-    #skills .progress {
-      height: 100%;
-      background: var(--verde);
-      width: 0;
-      border-radius: 20px;
-      transition: width 1s ease;
-    }
-
-    /* Idiomas */
-    #skills .languages {
-      margin-top: 1.5rem;
-    }
-    #skills .language-item {
-      margin-bottom: 0.7rem;
-      display: flex;
-      justify-content: space-between;
-      font-weight: 600;
-      color: var(--negro);
-    }
-    #skills .language-level {
-      font-style: italic;
-      color: #666;
-    }
-
-    /* Experience */
-    #experience .job {
-      margin-bottom: 1.3rem;
-    }
-    #experience .job-header {
-      display: flex;
-      justify-content: space-between;
-      font-weight: 700;
-      color: var(--azul);
-    }
-    #experience .job-company {
-      font-style: italic;
-      color: #666;
-      font-weight: 500;
-    }
-    #experience .job-desc {
-      margin-top: 0.3rem;
-      color: #333;
-    }
-
-    /* Education */
-    #education .edu-item {
-      margin-bottom: 1.2rem;
-    }
-    #education .edu-header {
-      display: flex;
-      justify-content: space-between;
-      font-weight: 700;
-      color: var(--azul);
-    }
-    #education .edu-school {
-      font-style: italic;
-      color: #666;
-      font-weight: 500;
-    }
-
-    /* Portfolio */
-    #portfolio {
-      text-align: center;
-    }
-    #portfolio .filters {
-      margin-bottom: 1rem;
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-    #portfolio .filters button {
-      background: var(--azul);
-      border: none;
-      color: white;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color var(--transition);
-      font-size: 0.9rem;
-    }
-    #portfolio .filters button.active,
-    #portfolio .filters button:hover {
-      background: var(--naranja);
-    }
-    #portfolio .projects {
-      display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-      gap: 1rem;
-    }
-    #portfolio .project {
-      background: var(--gris-claro);
-      border-radius: 6px;
-      overflow: hidden;
-      box-shadow: 0 1px 4px rgba(0,0,0,0.1);
-      cursor: pointer;
-      transition: transform 0.3s ease;
-    }
-    #portfolio .project:hover {
-      transform: scale(1.05);
-      box-shadow: 0 8px 15px rgba(0,0,0,0.2);
-    }
-    #portfolio .project img,
-    #portfolio .project video {
-      width: 100%;
-      height: 160px;
-      object-fit: cover;
-      display: block;
-    }
-    #portfolio .project-info {
-      padding: 0.6rem 0.8rem;
-      text-align: left;
-    }
-    #portfolio .project-title {
-      font-weight: 700;
-      font-size: 1rem;
-      color: var(--negro);
-      margin-bottom: 0.2rem;
-    }
-    #portfolio .project-category {
-      font-size: 0.85rem;
-      font-style: italic;
-      color: #666;
-    }
-
-    /* Blog */
-    #blog .post {
-      margin-bottom: 1.5rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid #ddd;
-    }
-    #blog .post-title {
-      font-weight: 700;
-      font-size: 1.1rem;
-      color: var(--azul);
-      margin-bottom: 0.2rem;
-      cursor: pointer;
-      text-decoration: underline;
-    }
-    #blog .post-date {
-      font-size: 0.85rem;
-      color: #666;
-      margin-bottom: 0.4rem;
-    }
-    #blog .post-summary {
-      color: #333;
-    }
-
-    /* Testimonials */
-    #testimonials .testimonial {
-      background: var(--gris-claro);
-      padding: 1rem 1.3rem;
-      border-radius: 6px;
-      margin-bottom: 1rem;
-      box-shadow: inset 0 0 5px rgba(0,0,0,0.05);
-    }
-    #testimonials .quote {
-      font-style: italic;
-      color: #444;
-      margin-bottom: 0.6rem;
-      position: relative;
-      padding-left: 20px;
-    }
-    #testimonials .quote::before {
-      content: "\f10d";
-      font-family: FontAwesome;
-      position: absolute;
-      left: 0;
-      top: 0;
-      font-size: 1.6rem;
-      color: var(--naranja);
-    }
-    #testimonials .author {
-      font-weight: 700;
-      color: var(--azul);
-    }
-    #testimonials .author-title {
-      font-style: italic;
-      font-size: 0.9rem;
-      color: #666;
-    }
-
-    /* Contact */
-    #contact form {
-      display: flex;
-      flex-direction: column;
-      gap: 0.9rem;
-      max-width: 500px;
-      margin: 0 auto 1.5rem;
-    }
-    #contact label {
-      font-weight: 600;
-      margin-bottom: 0.3rem;
-      color: var(--azul);
-    }
-    #contact input,
-    #contact textarea {
-      padding: 0.6rem 0.9rem;
-      border: 1px solid #ccc;
-      border-radius: 6px;
-      font-family: var(--font-family);
-      font-size: 1rem;
-      resize: vertical;
-      transition: border-color var(--transition);
-    }
-    #contact input:focus,
-    #contact textarea:focus {
-      outline: none;
-      border-color: var(--naranja);
-      box-shadow: 0 0 5px var(--naranja);
-    }
-    #contact button {
-      background: var(--verde);
-      border: none;
-      color: white;
-      font-weight: 700;
-      padding: 0.7rem 1.5rem;
-      border-radius: 30px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      width: max-content;
-      align-self: center;
-      box-shadow: 0 3px 8px rgba(40,167,69,0.5);
-      transition: background-color var(--transition);
-    }
-    #contact button:hover {
-      background: #1c7a2e;
-    }
-    #contact .info {
-      text-align: center;
-      margin-bottom: 1rem;
-      color: #444;
-    }
-    #contact .socials {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 0.8rem;
-    }
-    #contact .socials a {
-      color: var(--azul);
-      font-size: 1.5rem;
-      transition: color var(--transition);
-    }
-    #contact .socials a:hover {
-      color: var(--naranja);
-    }
-
-    /* Responsive */
-    @media (max-width: 600px) {
-      main {
-        margin: 0.5rem 1rem 2rem;
-        padding: 1rem 1rem 1.5rem;
-      }
-      #about .personal-info {
-        flex-direction: column;
-      }
-      #skills .skill-name,
-      #skills .language-item {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-      #skills .skill-name span,
-      #skills .language-item span {
-        margin-top: 0.2rem;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bolívar - Diseñador Gráfico</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+        }
+        .progress-bar {
+            height: 8px;
+            border-radius: 4px;
+        }
+        .color-header {
+            background: linear-gradient(90deg, #3498db, #e74c3c, #f39c12, #2ecc71);
+            height: 5px;
+        }
+        .section {
+            display: none;
+        }
+        .section.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .project-item {
+            transition: all 0.3s ease;
+        }
+        .project-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
-<body>
-  <main>
-    <nav id="menu" aria-label="Navegación del currículum">
-      <button class="active" data-section="home">Home / Portada</button>
-      <button data-section="about">About / Sobre mí</button>
-      <button data-section="skills">Skills / Habilidades</button>
-      <button data-section="experience">Experience / Experiencia</button>
-      <button data-section="education">Education / Educación</button>
-      <button data-section="portfolio">Portfolio / Portafolio</button>
-      <button data-section="blog">Blog</button>
-      <button data-section="testimonials">Testimonials / Testimonios</button>
-      <button data-section="contact">Contact / Contacto</button>
-    </nav>
+<body class="bg-gray-100 text-gray-800">
+    <!-- Color Header -->
+    <div class="color-header w-full"></div>
 
-    <!-- HOME / PORTADA -->
-    <section id="home" class="active" tabindex="0" aria-label="Portada del currículum">
-      <img
-        src="https://images.pexels.com/photos/614810/pexels-photo-614810.jpeg?auto=compress&cs=tinysrgb&h=350"
-        alt="Foto de Bolívar"
-        class="avatar"
-        loading="lazy"
-      />
-      <h1 class="name">Bolívar Orlando Andrade</h1>
-      <h2 class="profession">Diseñador Gráfico</h2>
-      <p class="description">
-        Soy Bolívar, diseñador gráfico con 10 años de experiencia. Domino todas las aplicaciones de Adobe Creative Suite
-        (Photoshop, Illustrator, InDesign, Premiere Pro y After Effects). Estoy graduado en áreas relacionadas con tecnología
-        y desarrollo, combinando creatividad con soluciones tecnológicas. Tengo 28 años y pasión por innovar en el diseño.
-      </p>
-      <a
-        href="https://example.com/bolivar_andrade_cv.pdf"
-        target="_blank"
-        rel="noopener"
-        class="btn-cv"
-        download="Bolivar_Andrade_CV.pdf"
-        aria-label="Descargar CV de Bolívar"
-      >
-        <i class="fa fa-download"></i> Descargar CV
-      </a>
-    </section>
+    <!-- Main Container -->
+    <div class="container mx-auto px-4 py-8 max-w-6xl">
+        <!-- Home Section -->
+        <section id="home" class="section active text-center py-12">
+            <div class="mx-auto w-40 h-40 rounded-full overflow-hidden border-4 border-white shadow-lg mb-6">
+                <img src="https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Bolívar" class="w-full h-full object-cover">
+            </div>
+            <h1 class="text-4xl font-bold mb-2">Bolívar Martínez</h1>
+            <h2 class="text-2xl text-orange-500 font-semibold mb-4">Diseñador Gráfico</h2>
+            <p class="text-lg max-w-2xl mx-auto mb-8">Soy un diseñador gráfico apasionado por crear soluciones visuales innovadoras que combinan estética y funcionalidad.</p>
+            <button onclick="downloadCV()" class="bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-full transition duration-300 transform hover:scale-105">
+                <i class="fa fa-download mr-2"></i>Descargar CV
+            </button>
+        </section>
 
-    <!-- ABOUT / SOBRE MÍ -->
-    <section id="about" tabindex="0" aria-label="Sobre mí">
-      <h2>About / Sobre mí</h2>
-      <p>
-        Soy un profesional apasionado por el diseño gráfico y la tecnología. A lo largo de mi carrera he desarrollado
-        proyectos creativos que integran las últimas tendencias y herramientas digitales, siempre buscando aportar valor
-        visual y funcional a cada cliente. Me especializo en branding, diseño editorial, motion graphics y edición de video,
-        siempre con un enfoque innovador y orientado a resultados.
-      </p>
-
-      <div class="personal-info">
-        <div>
-          <strong>Fecha de nacimiento</strong>
-          <p>15 de abril de 1997</p>
+        <!-- Navigation -->
+        <div class="flex flex-wrap justify-center gap-4 my-8">
+            <button onclick="showSection('home')" class="nav-btn bg-blue-500 text-white px-4 py-2 rounded-full">Inicio</button>
+            <button onclick="showSection('about')" class="nav-btn bg-orange-500 text-white px-4 py-2 rounded-full">Sobre mí</button>
+            <button onclick="showSection('skills')" class="nav-btn bg-green-500 text-white px-4 py-2 rounded-full">Habilidades</button>
+            <button onclick="showSection('experience')" class="nav-btn bg-red-500 text-white px-4 py-2 rounded-full">Experiencia</button>
+            <button onclick="showSection('education')" class="nav-btn bg-blue-500 text-white px-4 py-2 rounded-full">Educación</button>
+            <button onclick="showSection('portfolio')" class="nav-btn bg-orange-500 text-white px-4 py-2 rounded-full">Portafolio</button>
+            <button onclick="showSection('blog')" class="nav-btn bg-green-500 text-white px-4 py-2 rounded-full">Blog</button>
+            <button onclick="showSection('testimonials')" class="nav-btn bg-red-500 text-white px-4 py-2 rounded-full">Testimonios</button>
+            <button onclick="showSection('contact')" class="nav-btn bg-blue-500 text-white px-4 py-2 rounded-full">Contacto</button>
         </div>
-        <div>
-          <strong>Ubicación</strong>
-          <p>Quito, Ecuador</p>
-        </div>
-        <div>
-          <strong>Email</strong>
-          <p>bolivar.andrade@email.com</p>
-        </div>
-        <div>
-          <strong>Teléfono</strong>
-          <p>+593 9 8765 4321</p>
-        </div>
-      </div>
 
-      <h3>Resumen profesional</h3>
-      <p class="summary">
-        +10 años diseñando para empresas multinacionales y startups. Experiencia en gestión de proyectos creativos,
-        coordinación con equipos multidisciplinarios y entrega puntual de productos de alta calidad. Experto en Adobe CC,
-        diseño responsivo y comunicación visual estratégica.
-      </p>
-    </section>
+        <!-- About Section -->
+        <section id="about" class="section py-8">
+            <h2 class="text-3xl font-bold mb-6 text-center">Sobre Mí</h2>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <p class="mb-4">Soy Bolívar, diseñador gráfico con 10 años de experiencia. Domino todas las aplicaciones de Adobe Creative Suite (Photoshop, Illustrator, InDesign, Premiere Pro y After Effects).</p>
+                    <p class="mb-4">Estoy graduado en áreas relacionadas con tecnología y desarrollo, combinando creatividad con soluciones tecnológicas. Tengo 28 años y pasión por innovar en el diseño.</p>
+                    <p>Mi enfoque se centra en crear diseños que no solo sean visualmente atractivos, sino también funcionales y alineados con los objetivos de negocio de mis clientes.</p>
+                </div>
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Información Personal</h3>
+                    <ul class="space-y-3">
+                        <li><i class="fa fa-birthday-cake text-orange-500 mr-2"></i> <strong>Fecha de Nacimiento:</strong> 15 de marzo de 1995</li>
+                        <li><i class="fa fa-map-marker text-orange-500 mr-2"></i> <strong>Ubicación:</strong> Bogotá, Colombia</li>
+                        <li><i class="fa fa-envelope text-orange-500 mr-2"></i> <strong>Email:</strong> bolivar.diseno@example.com</li>
+                        <li><i class="fa fa-phone text-orange-500 mr-2"></i> <strong>Teléfono:</strong> +57 123 456 7890</li>
+                        <li><i class="fa fa-globe text-orange-500 mr-2"></i> <strong>Sitio Web:</strong> www.bolivardiseno.com</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
-    <!-- SKILLS / HABILIDADES -->
-    <section id="skills" tabindex="0" aria-label="Habilidades técnicas e idiomas">
-      <h2>Skills / Habilidades</h2>
+        <!-- Skills Section -->
+        <section id="skills" class="section py-8">
+            <h2 class="text-3xl font-bold mb-8 text-center">Habilidades</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Habilidades Técnicas</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Adobe Photoshop</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-green-500 h-2.5 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Adobe Illustrator</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-green-500 h-2.5 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Adobe InDesign</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-green-500 h-2.5 rounded-full" style="width: 85%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>After Effects</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-green-500 h-2.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Premiere Pro</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-green-500 h-2.5 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-semibold mb-4">Idiomas</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Español</span>
+                                <span>Nativo</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-blue-500 h-2.5 rounded-full" style="width: 100%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Inglés</span>
+                                <span>Avanzado</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-blue-500 h-2.5 rounded-full" style="width: 80%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between mb-1">
+                                <span>Francés</span>
+                                <span>Intermedio</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2.5">
+                                <div class="bg-blue-500 h-2.5 rounded-full" style="width: 60%"></div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="text-xl font-semibold mt-8 mb-4">Otras Habilidades</h3>
+                    <div class="flex flex-wrap gap-2">
+                        <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Diseño UX/UI</span>
+                        <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Branding</span>
+                        <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Fotografía</span>
+                        <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">HTML/CSS</span>
+                        <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Animación</span>
+                        <span class="bg-gray-200 px-3 py-1 rounded-full text-sm">Ilustración</span>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-      <div class="skill">
-        <div class="skill-name">
-          <span>Adobe Photoshop</span><span>95%</span>
-        </div>
-        <div class="progress-bar" aria-label="Progreso en Adobe Photoshop">
-          <div class="progress" style="width: 95%; background-color: var(--verde);"></div>
-        </div
-```
+        <!-- Experience Section -->
+        <section id="experience" class="section py-8">
+            <h2 class="text-3xl font-bold mb-8 text-center">Experiencia Laboral</h2>
+            
+            <div class="space-y-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                        <h3 class="text-xl font-semibold">Diseñador Gráfico Senior</h3>
+                        <span class="text-orange-500 font-medium">2020 - Presente</span>
+                    </div>
+                    <h4 class="text-lg text-blue-500 mb-2">Creativo Digital S.A.</h4>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Liderar el equipo de diseño para proyectos de branding corporativo.</li>
+                        <li>Desarrollar identidades visuales para más de 20 clientes internacionales.</li>
+                        <li>Crear materiales de marketing digital e impresos con alta conversión.</li>
+                        <li>Implementar procesos de diseño más eficientes que redujeron tiempos de entrega en un 30%.</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                        <h3 class="text-xl font-semibold">Diseñador Multimedia</h3>
+                        <span class="text-orange-500 font-medium">2016 - 2020</span>
+                    </div>
+                    <h4 class="text-lg text-blue-500 mb-2">Agencia VisualMind</h4>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Diseño de interfaces de usuario para aplicaciones móviles y web.</li>
+                        <li>Producción de animaciones y videos promocionales.</li>
+                        <li>Colaboración con desarrolladores para implementar diseños responsivos.</li>
+                        <li>Ganador del premio "Mejor Diseño de App" en el Festival Digital 2019.</li>
+                    </ul>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex flex-col md:flex-row md:justify-between md:items-center mb-4">
+                        <h3 class="text-xl font-semibold">Diseñador Gráfico Junior</h3>
+                        <span class="text-orange-500 font-medium">2013 - 2016</span>
+                    </div>
+                    <h4 class="text-lg text-blue-500 mb-2">Estudio Gráfico Pixel</h4>
+                    <ul class="list-disc pl-5 space-y-2">
+                        <li>Diseño de logotipos, folletos y material promocional.</li>
+                        <li>Retoque fotográfico y preparación de archivos para impresión.</li>
+                        <li>Apoyo en la creación de presentaciones corporativas.</li>
+                        <li>Participación en más de 50 proyectos de diseño para PYMES.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section py-8">
+            <h2 class="text-3xl font-bold mb-8 text-center">Educación</h2>
+            
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">Licenciatura en Diseño Gráfico</h3>
+                    <h4 class="text-blue-500 mb-2">Universidad Nacional de Colombia</h4>
+                    <p class="text-orange-500 font-medium mb-3">2010 - 2014</p>
+                    <p>Especialización en diseño digital y multimedia. Tesis destacada sobre "Diseño de interfaces intuitivas para adultos mayores".</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">Diplomado en UX/UI</h3>
+                    <h4 class="text-blue-500 mb-2">Academia de Diseño Digital</h4>
+                    <p class="text-orange-500 font-medium mb-3">2015</p>
+                    <p>Programa intensivo de 6 meses enfocado en experiencia de usuario y diseño de interfaces.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">Curso Avanzado de Motion Graphics</h3>
+                    <h4 class="text-blue-500 mb-2">Escuela de Artes Visuales</h4>
+                    <p class="text-orange-500 font-medium mb-3">2017</p>
+                    <p>Especialización en animación y efectos visuales usando After Effects y Cinema 4D.</p>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-2">Certificación Adobe Certified Expert</h3>
+                    <h4 class="text-blue-500 mb-2">Adobe Systems</h4>
+                    <p class="text-orange-500 font-medium mb-3">2018</p>
+                    <p>Certificación en Photoshop, Illustrator e InDesign con calificación máxima.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Section -->
+        <section id="portfolio" class="section py-8">
+            <h2 class="text-3xl font-bold mb-8 text-center">Portafolio</h2>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-8">
+                <button onclick="filterProjects('all')" class="px-4 py-2 bg-blue-500 text-white rounded-full">Todos</button>
+                <button onclick="filterProjects('branding')" class="px-4 py-2 bg-orange-500 text-white rounded-full">Branding</button>
+                <button onclick="filterProjects('web')" class="px-4 py-2 bg-green-500 text-white rounded-full">Diseño Web</button>
+                <button onclick="filterProjects('print')" class="px-4 py-2 bg-red-500 text-white rounded-full">Diseño Impreso</button>
+                <button onclick="filterProjects('animation')" class="px-4 py-2 bg-blue-500 text-white rounded-full">Animación</button>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="project-item branding" data-category="branding">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images.pexels.com/photos/3965545/pexels-photo-3965545.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Proyecto Branding" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">Identidad Corporativa - TechSolutions</h3>
+                            <p class="text-gray-600 mb-3">Diseño completo de marca para empresa de tecnología.</p>
+                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Branding</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-item web" data-category="web">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images.pexels.com/photos/1779487/pexels-photo-1779487.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Diseño Web" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">E-commerce - Moda Urbana</h3>
+                            <p class="text-gray-600 mb-3">Diseño de interfaz y experiencia de usuario para tienda online.</p>
+                            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Diseño Web</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-item print" data-category="print">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images.pexels.com/photos/1301585/pexels-photo-1301585.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Diseño Impreso" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">Revista Cultural - Arte Contemporáneo</h3>
+                            <p class="text-gray-600 mb-3">Diseño editorial para publicación trimestral.</p>
+                            <span class="inline-block bg-red-100 text-red-800 px-3 py-1 rounded-full text-sm">Diseño Impreso</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-item animation" data-category="animation">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images.pexels.com/photos/5474295/pexels-photo-5474295.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Animación" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">Video Promocional - App Financiera</h3>
+                            <p class="text-gray-600 mb-3">Animación explicativa para lanzamiento de aplicación.</p>
+                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Animación</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-item branding" data-category="branding">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images.pexels.com/photos/3184465/pexels-photo-3184465.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Branding" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">Rediseño de Marca - Café Artesanal</h3>
+                            <p class="text-gray-600 mb-3">Nueva identidad visual para cadena de cafeterías.</p>
+                            <span class="inline-block bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">Branding</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="project-item web" data-category="web">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-md">
+                        <img src="https://images.pexels.com/photos/270637/pexels-photo-270637.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Diseño Web" class="w-full h-48 object-cover">
+                        <div class="p-4">
+                            <h3 class="text-xl font-semibold mb-2">Portal Educativo - Aprende Idiomas</h3>
+                            <p class="text-gray-600 mb-3">Diseño de plataforma de aprendizaje en línea.</p>
+                            <span class="inline-block bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Diseño Web</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section id="blog" class="section py-8">
+            <h2 class="text-3xl font-bold mb-8 text-center">Blog</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <img src="https://images.pexels.com/photos/196644/pexels-photo-196644.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Blog 1" class="w-full h-48 object-cover mb-4 rounded">
+                    <h3 class="text-xl font-semibold mb-2">Tendencias de Diseño 2023</h3>
+                    <p class="text-orange-500 text-sm mb-3">15 de enero, 2023</p>
+                    <p class="mb-4">Exploramos las tendencias más relevantes en diseño gráfico para este año, desde el neomorfismo hasta el uso de colores vibrantes.</p>
+                    <a href="#" class="text-blue-500 font-medium hover:underline">Leer más →</a>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <img src="https://images.pexels.com/photos/1181673/pexels-photo-1181673.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Blog 2" class="w-full h-48 object-cover mb-4 rounded">
+                    <h3 class="text-xl font-semibold mb-2">Cómo Crear un Branding Efectivo</h3>
+                    <p class="text-orange-500 text-sm mb-3">28 de noviembre, 2022</p>
+                    <p class="mb-4">Guía paso a paso para desarrollar una identidad de marca coherente y memorable que conecte con tu audiencia.</p>
+                    <a href="#" class="text-blue-500 font-medium hover:underline">Leer más →</a>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <img src="https://images.pexels.com/photos/669615/pexels-photo-669615.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Blog 3" class="w-full h-48 object-cover mb-4 rounded">
+                    <h3 class="text-xl font-semibold mb-2">Adobe Illustrator: Tips para Principiantes</h3>
+                    <p class="text-orange-500 text-sm mb-3">10 de octubre, 2022</p>
+                    <p class="mb-4">Consejos prácticos para quienes están comenzando a usar este poderoso software de diseño vectorial.</p>
+                    <a href="#" class="text-blue-500 font-medium hover:underline">Leer más →</a>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <img src="https://images.pexels.com/photos/590022/pexels-photo-590022.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Blog 4" class="w-full h-48 object-cover mb-4 rounded">
+                    <h3 class="text-xl font-semibold mb-2">Diseño Sostenible: Buenas Prácticas</h3>
+                    <p class="text-orange-500 text-sm mb-3">22 de septiembre, 2022</p>
+                    <p class="mb-4">Cómo los diseñadores podemos contribuir a un mundo más sostenible a través de nuestras decisiones creativas.</p>
+                    <a href="#" class="text-blue-500 font-medium hover:underline">Leer más →</a>
+                </div>
+            </div>
+            
+            <div class="text-center mt-8">
+                <a href="#" class="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold py-3 px-6 rounded-full transition duration-300">Ver todos los artículos</a>
+            </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimonials" class="section py-8">
+            <h2 class="text-3xl font-bold mb-8 text-center">Testimonios</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Cliente 1" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">María Fernanda Gómez</h4>
+                            <p class="text-gray-600 text-sm">Directora de Marketing, TechSolutions</p>
+                        </div>
+                    </div>
+                    <p class="italic text-gray-700">"Bolívar transformó por completo nuestra identidad visual. Su capacidad para captar la esencia de nuestra marca y plasmarla en diseños impactantes fue extraordinaria. Recomiendo su trabajo sin reservas."</p>
+                    <div class="flex mt-3 text-yellow-400">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Cliente 2" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Carlos Andrés Rodríguez</h4>
+                            <p class="text-gray-600 text-sm">CEO, Café Artesanal</p>
+                        </div>
+                    </div>
+                    <p class="italic text-gray-700">"Trabajar con Bolívar fue una experiencia excepcional. Su profesionalismo, creatividad y atención al detalle superaron todas nuestras expectativas. Nuestras ventas aumentaron un 40% después del rediseño de nuestra marca."</p>
+                    <div class="flex mt-3 text-yellow-400">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.pexels.com/photos/3763188/pexels-photo-3763188.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Cliente 3" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Ana Lucía Pérez</h4>
+                            <p class="text-gray-600 text-sm">Directora Creativa, Agencia Digital</p>
+                        </div>
+                    </div>
+                    <p class="italic text-gray-700">"Como colega en la industria, he tenido el privilegio de colaborar con Bolívar en varios proyectos. Su versatilidad y dominio técnico son impresionantes. Siempre aporta soluciones innovadoras y visualmente impactantes."</p>
+                    <div class="flex mt-3 text-yellow-400">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star-half-o"></i>
+                    </div>
+                </div>
+                
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <div class="flex items-center mb-4">
+                        <div class="w-16 h-16 rounded-full overflow-hidden mr-4">
+                            <img src="https://images.pexels.com/photos/3777943/pexels-photo-3777943.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940" alt="Cliente 4" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Javier Morales</h4>
+                            <p class="text-gray-600 text-sm">Director de Arte, Revista Cultural</p>
+                        </div>
+                    </div>
+                    <p class="italic text-gray-700">"Bolívar ha sido el diseñador principal de nuestra revista durante 3 años. Su capacidad para interpretar los temas y crear diseños que comunican efectivamente es notable. Un profesional altamente recomendado."</p>
+                    <div class="flex mt-3 text-yellow-400">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section py-8">
+            <h2 class="text-3xl font-bold mb-8 text-center">Contacto</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white p-6 rounded-lg shadow-md">
+                    <h3 class="text-xl font-semibold mb-4">Envíame un mensaje</h3>
+                    <form id="contactForm" class="space-y-4">
+                        <div>
+                            <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Nombre</label>
+                            <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                            <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div>
+                            <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Asunto</label>
+                            <input type="text" id="subject" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required>
+                        </div>
+                        <div>
+                            <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
+                            <textarea id="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500" required></textarea>
+                        </div>
+                        <button type="submit" class="w-full bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-4 rounded-md transition duration-300">Enviar Mensaje</button>
+                    </form>
+                </div>
+                
+                <div class="space-y-6">
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4">Información de Contacto</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fa fa-map-marker text-orange-500 mt-1 mr-3"></i>
+                                <span>Calle 123 #45-67, Bogotá, Colombia</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-envelope text-orange-500 mt-1 mr-3"></i>
+                                <span>bolivar.diseno@example.com</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-phone text-orange-500 mt-1 mr-3"></i>
+                                <span>+57 123 456 7890</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fa fa-globe text-orange-500 mt-1 mr-3"></i>
+                                <span>www.bolivardiseno.com</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4">Redes Sociales</h3>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-blue-600 text-white flex items-center justify-center hover:bg-blue-700 transition duration-300">
+                                <i class="fa fa-linkedin"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-blue-400 text-white flex items-center justify-center hover:bg-blue-500 transition duration-300">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-pink-600 text-white flex items-center justify-center hover:bg-pink-700 transition duration-300">
+                                <i class="fa fa-instagram"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-red-600 text-white flex items-center justify-center hover:bg-red-700 transition duration-300">
+                                <i class="fa fa-youtube"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-gray-800 text-white flex items-center justify-center hover:bg-gray-900 transition duration-300">
+                                <i class="fa fa-github"></i>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-md">
+                        <h3 class="text-xl font-semibold mb-4">Disponibilidad</h3>
+                        <p class="mb-3">Actualmente disponible para proyectos freelance y colaboraciones a largo plazo.</p>
+                        <a href="https://wa.me/571234567890" class="inline-flex items-center bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-full transition duration-300">
+                            <i class="fa fa-whatsapp mr-2"></i> Contáctame por WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Show selected section and hide others
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update active nav button
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-offset-2', 'ring-blue-500');
+            });
+            
+            // Scroll to top of section
+            window.scrollTo({
+                top: 100,
+                behavior: 'smooth'
+            });
+        }
+        
+        // Filter portfolio projects
+        function filterProjects(category) {
+            const projects = document.querySelectorAll('.project-item');
+            
+            projects.forEach(project => {
+                if (category === 'all' || project.dataset.category === category) {
+                    project.style.display = 'block';
+                } else {
+                    project.style.display = 'none';
+                }
+            });
+        }
+        
+        // Simulate CV download
+        function downloadCV() {
+            alert('Descargando CV... En una implementación real, esto descargaría un archivo PDF.');
+        }
+        
+        // Handle contact form submission
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            // In a real implementation, you would send this data to a server
+            console.log({name, email, subject, message});
+            
+            alert(`Gracias por tu mensaje, ${name}! Me pondré en contacto contigo pronto.`);
+            this.reset();
+        });
+        
+        // Initialize - show home section by default
+        document.addEventListener('DOMContentLoaded', function() {
+            showSection('home');
+        });
+    </script>
+</body>
+</html>
